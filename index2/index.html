@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>话题分享</title>
+    <link rel="stylesheet" href="../tool/tool.css">
+    <link rel="stylesheet" href="index.css">
+    <!-- 计算rem的比例 -->
+    <script>
+        var num = 1 / window.devicePixelRatio;
+        document.write('<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale='+num+',minimum-scale='+num+',maximum-scale='+num+'" />')
+        var fontNum = document.documentElement.clientWidth / 40;
+        var html = document.getElementsByTagName('html')[0];
+        html.style.fontSize = fontNum + 'px';
+    </script>
+</head>
+<body>
+   
+    <!-- 头部浮层 -->
+    <div class="head">
+        <h1>看见</h1>
+        <h2>TO SEE</h2>
+        <a href="javascript:;">APP内浏览</a>
+    </div>
+    <!-- 图片阵列 -->
+    <div class="imgs">
+        <ul>
+            <li>
+                <img src="img/5a8ac08e24b99.jpg" alt="">
+            </li>
+            <li>
+                <img src="img/5a8ac08e25629.jpg" alt="">
+            </li>
+            <li>
+                <img src="img/5a8ac08e25ce2.jpg" alt="">
+            </li>
+            <li>
+                <img src="img/5a8ac08e25629.jpg" alt="">
+            </li>
+        </ul>
+    </div>
+    <!-- 图说描述 -->
+    <div class="caption">
+        <h4>唯美矢量插画</h4>
+        <div class="caption_content">
+            寂寞的夜晚，飞雪飘零。寂寞的夜晚，飞雪飘零。。。寂寞的夜晚，飞雪飘零。
+        </div>
+        <ul>
+            <li>二次元</li>
+            <li>手绘</li>
+            <li>萝莉</li>
+        </ul>
+    </div>
+    <!-- 用户信息 -->
+    <div class="user">
+        <div class="user_bor">
+            <div class="img">
+                <img src="img/5a1d233cd90e3.jpg">
+            </div>
+            <div class="middle">
+                <div class="middle_name">sallymann</div>
+                <div class="middle_describe">放飞心情啦啦啦啦</div>
+            </div>
+            <div class="right">
+                关注
+            </div>
+        </div>
+    </div>
+    <!-- 浏览数和评论数 -->
+    <div class="see">
+        <i class="see_ico1"></i>
+        <span class="see_num1">17338</span>
+        <i class="see_ico2"></i>
+        <span class="see_num2">332</span>
+    </div>
+    <!-- 评论详细 -->
+    <div class="comment">
+        <ul>
+            <li>
+                <span class="span1">飞一飞</span>
+                <span class="span2">：</span>
+                <span class="span3">飘起来</span>
+            </li>
+            <li>
+                <span class="span1">蓝色的玻璃</span>
+                <span class="span2">：</span>
+                <span class="span3">飘起来</span>
+            </li>
+            <li>
+                <span class="span1">飞一飞</span>
+                <span class="span2">：</span>
+                <span class="span3">飘起来</span>
+            </li>
+        </ul>
+    </div>
+    <!-- 打开app -->
+    <div class="app">
+        <a href="javascript:;">打开APP参与互动</a>
+        <div></div>
+    </div>
+    <!-- 更多文章 -->
+    <div class="more">
+        <div class="more_head">
+            <i></i>
+            <h2>更多文章</h2>
+        </div>
+        <div class="more_content">
+            <ul>
+                <li>
+                    <div class="more_content_left">
+                        <img src="img/5a8ac08e24b99.jpg" alt="">
+                    </div>
+                    <div class="more_content_right">
+                        <span>如果今天可以休息，我希望守护在你身边知道你的手机没电。</span>
+                        <div class="more_content_right_bottom">
+                            <span>
+                                win
+                            </span>
+                            <i>今天3:24</i>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="more_content_left">
+                        <img src="img/5a8cbf1abe5f7.jpg" alt="">
+                    </div>
+                    <div class="more_content_right">
+                        <span>如果今天可以休息，我希望守护在你身边知道你的手机没电。</span>
+                        <div class="more_content_right_bottom">
+                            <span>
+                                可达到
+                            </span>
+                            <i>今天5:24</i>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!-- 文章结尾 -->
+    <div class="foot">
+        <div class="foot_content">
+            <span>去看看其他文章，有没有把你的胃口吊起来</span>
+            <div>
+                <a href="javascript:;">登陆</a>
+                <i></i>
+                <a href="javascript:;">注册</a>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

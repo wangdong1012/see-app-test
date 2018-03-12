@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>个人分享</title>
+    <link rel="stylesheet" href="../tool/tool.css">
+    <link rel="stylesheet" href="tindex.css">
+    <script src="./jquery-3.2.0.js"></script>
+    <!-- 计算rem的比例 -->
+    <script>
+        var num = 1 / window.devicePixelRatio;
+        document.write('<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale='+num+',minimum-scale='+num+',maximum-scale='+num+'" />')
+        var fontNum = document.documentElement.clientWidth / 40;
+        var html = document.getElementsByTagName('html')[0];
+        html.style.fontSize = fontNum + 'px';
+    </script>
+</head>
+<body>
+    <!-- 头部 -->
+        <div class="head">
+            <div class="head_top">
+                <img src="./img/5a8ac08e24b99.jpg" alt="主背景图">
+            </div>
+            <div class="head_middle">
+                <div class="head_user_img">
+                    <img src="img/5a8cbf1abe5f7.jpg" alt="">
+                </div>
+                <div class="head_user">
+                    <div class="head_user_name">
+                        isabelle
+                    </div>
+                    <div class="head_user_content"> 
+                        I hope happy every day. best wishes
+                    </div>
+                </div>
+            </div>
+            <div class="head_like">
+                <ul>
+                    <li>
+                        <span class="s1">12</span>
+                        <span class="s2">关注</span>
+                    </li>
+                    <li>
+                        <span class="s1">6</span>
+                        <span class="s2">粉丝</span>
+                    </li>
+                    <li>
+                        <span class="s1">23</span>
+                        <span class="s2">喜欢</span>
+                    </li>
+                </ul>
+            </div>
+            <div class="head_foot">
+                <div><span>10 </span>篇文章</div>
+            </div>
+        </div>
+        <!-- 内容部分 -->
+        <div class="content">
+            <ul>
+                <li class="li">
+                    <div class="content_head">
+                        <div class="content_head_user">
+                            <img src="img/5a8cbf1abe5f7.jpg" alt="">
+                            <span>isabelle</span>
+                        </div>
+                        <div class="content_head_time">
+                            今天 3:20
+                        </div>
+                    </div>
+                    <!-- 图片 -->
+                    <div class="content_img">
+                        <img src="img/5a8ac08e25629.jpg" alt="">
+                        <span></span>
+                    </div>
+                   <!-- 学校 -->
+                    <div class="content_school">
+                        <div class="content_school_left">
+                            <i></i>
+                            <span>中国传媒大学</span>
+                        </div>
+                        <div class="content_school_right">
+                            <span>10 </span>人阅读
+                        </div>
+                    </div>
+                    <!-- 详情 -->
+                    <div class="caption">
+                        <h4>这个话题我们一起讨论下</h4>
+                        <div class="caption_content">
+                            寂寞的夜晚，飞雪飘零。寂寞的夜晚，飞雪飘零。。。寂寞的夜晚，飞雪飘零。
+                        </div>
+                        <ul>
+                            <li>二次元</li>
+                            <li>手绘</li>
+                            <li>萝莉</li>
+                        </ul>
+                    </div>
+                    <!-- 评论详细 -->
+                    <div class="comment">
+                        <ul>
+                            <li>
+                                <span class="span1">飞一飞</span>
+                                <span class="span2">：</span>
+                                <span class="span3">飘起来</span>
+                            </li>
+                            <li>
+                                <span class="span1">蓝色的玻璃</span>
+                                <span class="span2">：</span>
+                                <span class="span3">飘起来</span>
+                            </li>
+                            <li>
+                                <span class="span1">飞一飞</span>
+                                <span class="span2">：</span>
+                                <span class="span3">飘起来</span>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="li">
+                    <div class="content_head">
+                        <div class="content_head_user">
+                            <img src="img/5a8cbf1abe5f7.jpg" alt="">
+                            <span>isabelle</span>
+                        </div>
+                        <div class="content_head_time">
+                            今天 3:20
+                        </div>
+                    </div>
+                    <!-- 图片 -->
+                    <div class="content_img">
+                        <img src="img/5a8ac08e25629.jpg" alt="">
+                        <!-- <span>话题</span> -->
+                    </div>
+                    <!-- 学校 -->
+                    <div class="content_school">
+                        <div class="content_school_left">
+                            <i></i>
+                            <span>中国传媒大学</span>
+                        </div>
+                        <div class="content_school_right">
+                            <span>10 </span>人阅读
+                        </div>
+                    </div>
+                    <!-- 详情 -->
+                    <div class="caption">
+                        <!-- <h4>这个话题我们一起讨论下</h4> -->
+                        <div class="caption_content">
+                            寂寞的夜晚，飞雪飘零。寂寞的夜晚，飞雪飘零。。。寂寞的夜晚，飞雪飘零。
+                        </div>
+                        <ul>
+                            <li>二次元</li>
+                            <li>手绘</li>
+                            <li>萝莉</li>
+                        </ul>
+                    </div>
+                    <!-- 评论详细 -->
+                    <div class="comment">
+                        <ul>
+                            <li>
+                                <span class="span1">飞一飞</span>
+                                <span class="span2">：</span>
+                                <span class="span3">飘起来</span>
+                            </li>
+                            <li>
+                                <span class="span1">蓝色的玻璃</span>
+                                <span class="span2">：</span>
+                                <span class="span3">飘起来</span>
+                            </li>
+                            <li>
+                                <span class="span1">飞一飞</span>
+                                <span class="span2">：</span>
+                                <span class="span3">飘起来</span>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </div>
+         <!-- 文章结尾 -->
+        <div class="foot">
+            <div class="foot_content">
+                <span>去看看其他文章，有没有把你的胃口吊起来</span>
+                <div>
+                    <a href="javascript:;">登陆</a>
+                    <i></i>
+                    <a href="javascript:;">注册</a>
+                </div>
+            </div>
+        </div>
+        <script src="tindex.js"></script>
+    </body>
+</html>

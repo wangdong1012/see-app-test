@@ -1,0 +1,297 @@
+body{
+    background: #f5f5f5;
+}
+/* 头部 */
+.head_top{
+    height: 14.5rem;
+    position: relative;
+    overflow: hidden;
+}
+.head_top img{
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    margin-top: -50%;
+    opacity: 0;
+}
+
+/* 中间的用户信息 */
+.head_user_img{
+    width: 7.1875rem;
+    height: 7.1875rem;
+    border-radius:50%;
+    border: 0.1875rem solid #fff; 
+    overflow: hidden;
+    margin-left: 2.9375rem;
+    float: left;
+    margin-right: 2.125rem;
+    position: relative;
+    z-index: 10;
+}
+
+.head_user_img img{
+    width: 100%;
+    height: 100%;
+    
+}
+
+.head_user{
+    float: left;
+
+}
+.head_middle{
+    margin-top:-3.125rem;
+    margin-bottom: 2.5rem;
+    position: relative;
+    z-index: 10;
+}
+.head_middle:after{
+    display:block;
+    content:"clear";
+    height:0;
+    clear:both;
+    overflow:hidden;
+    visibility:hidden;
+}
+.head_user_name{
+    font-size: 2rem;
+    color: #fff;
+    margin-bottom: 0.9375rem;
+
+}
+.head_user_content{
+    font-size: 1.5rem;
+    color: #101010;
+    line-height: 2.125rem;
+    width: 17.25rem;
+}
+/* 喜欢的信息 */
+.head_like{
+    padding-left: 4rem;
+}
+.head_like ul:after{
+    display:block;
+    content:"clear";
+    height:0;
+    clear:both;
+    overflow:hidden;
+    visibility:hidden;
+}
+.head_like li{
+    float: left;
+    text-align: center;
+    margin-right: 5.75rem;
+}
+.head_like .s1{
+    display: block;
+    font-size:1.75rem; 
+    line-height: 3rem;
+    color: #101010;
+}
+.head_like .s2{
+    display: block;
+    font-size:1.4375rem; 
+    line-height: 2.6875rem;
+    color: #c9c9c9;
+}
+/* 头部结尾 */
+.head_foot{
+    padding-left: 1.375rem;
+    padding-right: 1.375rem;
+}
+.head_foot div{
+    border-top:1px solid #e4e4e4; 
+    font-size: 1.625rem;
+    line-height: 5.25rem;
+    color: #7d7d7d;
+}
+.head{
+    margin-bottom: 1.3125rem;
+    background: #fff;
+}
+/* 内容展示 */
+
+/* 开头 */
+.content .li{
+    padding-left: 1.75rem;
+    padding-right: 1.75rem;
+    background: #fff;
+    margin-bottom: 20px;
+}
+.content_head{
+    height: 6.125rem;
+}
+.content_head_user{
+    float: left;  
+    position: relative;
+}
+.content_head_user img{
+    position: absolute;
+    top: 50%;
+    width: 3.625rem;
+    height: 3.625rem;
+    border-radius: 50%;
+    visibility: middle;
+    margin-top: -1.8125rem;
+}
+.content_head_user span{
+    font-size:1.625rem; 
+    line-height: 6.125rem;
+    color: #101010;
+    margin-left: 4.875rem;
+}
+.content_head_time{
+    float:right;
+    font-size: 1.375rem;
+    line-height: 6.125rem;
+    color:#c9c9c9;
+}
+/* 图片位置 */
+
+
+.content_img img{
+    border-radius:0.5rem; 
+    position: absolute;
+    opacity: 0;
+}
+.content_img {
+    position: relative;
+    margin-bottom: 0.5625rem;
+    height: 24.375rem;
+    overflow: hidden;
+
+}
+.content_img span{
+    width: 8.8125rem;
+    height: 2.375rem;
+    position: absolute;
+    top: 0;
+    color: #fff;
+    text-align: center;
+    font-size: 1.75rem;
+    background: url('/Public/home/img/huati.png') no-repeat;
+    background-size:100% 100%; 
+    left: 50%;
+    margin-left: -4.4063rem;
+}
+/* 学校 */
+.content_school{
+    height: 4.875rem;
+
+}
+.content_school_left{
+    float: left;
+}
+.content_school_left i{
+    float: left;
+    width: 1.875rem;
+    height: 1.875rem;
+    background: url('/Public/home/img/content_ico.png') no-repeat;
+    background-size:100% 100%;
+    margin-top: 1.5rem;
+    margin-right: 0.8125rem;
+}
+.content_school_left span{
+    float: left;
+    font-size:1.5rem; 
+    color: #030303;
+    line-height: 4.875rem;
+}
+.content_school_right{
+    float: right;
+    font-size: 1.375rem;
+    line-height: 4.875rem;
+    color:#c9c9c9;
+}
+/* 图说描述 */
+.caption{
+    padding-bottom: 1.25rem;
+}
+.caption h4{
+    color: #101010;
+    font:1.75rem/2.375rem '微软雅黑';
+    float: left;
+}
+.caption_content{
+    font:1.5rem/2.125rem '微软雅黑';
+    color: #555;
+    margin-bottom: 1.875rem;
+    float: left;
+    width: 100%;
+}
+.caption li{
+    float: left;
+    height: 2.625rem;
+    padding-left: 1.375rem;
+    padding-right: 1.375rem;
+    font: 1.5rem/2.625rem '微软雅黑';
+    background: #aaaaaa;
+    color: #fff;
+    border-radius:0.9375rem; 
+    margin-right: 0.75rem;
+}
+.caption ul:after{
+    display:block;
+    content:"clear";
+    height:0;
+    clear:both;
+    overflow:hidden;
+    visibility:hidden;
+}
+/* 评论详情 */
+.comment{
+    border-top:1px solid #dfdfdf; 
+    padding-top: 0.625rem;
+    padding-bottom: 1.5625rem;
+}
+.comment span{
+    float: left;
+    font: 1.5rem/2.75rem '微软雅黑';
+    color: #3f51b5;
+}
+.comment .span3{
+    color: #101010;
+}
+.comment li:after{
+    display:block;
+    content:"clear";
+    height:0;
+    clear:both;
+    overflow:hidden;
+    visibility:hidden;
+}
+
+.content .setMrb{
+    margin-bottom:0; 
+}
+/* 文章结尾 */
+
+.foot{
+    padding-left:1.5rem;
+    padding-right: 1.5rem; 
+    background: #fff;
+}
+.foot_content{
+    padding-top: 1.6875rem; 
+    padding-bottom: 1.875rem;
+
+}
+.foot_content span{
+    display: block;
+    width: 100%;
+    text-align: center;
+    font: 1.5rem/2.75rem '微软雅黑';
+    color: #c8c8c8;
+    float: left;
+}
+.foot_content div{
+   text-align: center;
+}
+.foot_content div a{
+    color: #f77165;
+    font: 1.625rem/2.875rem '微软雅黑';
+}
+.foot_content div i{
+   display: inline-block;
+   width: 1.25rem; 
+}

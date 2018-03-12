@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <META HTTP-EQUIV="pragma" CONTENT="no-cache"> 
+    <META HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate"> 
+    <META HTTP-EQUIV="expires" CONTENT="0">
+    <title>个人分享</title>
+    <!-- <link rel="stylesheet" href="../tool/tool.css">
+    <link rel="stylesheet" href="tindex.css"> -->
+    <!-- 线上路径 -->
+    <link href="__STATIC__/css/tindex.css" type="text/css" rel="stylesheet" />
+    <link href="__STATIC__/css/tool.css" type="text/css" rel="stylesheet" />
+    <script src="__STATIC__/js/jquery-3.2.0.js"></script>
+    <!-- 计算rem的比例 -->
+    <script>
+        var num = 1 / window.devicePixelRatio;
+        document.write('<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale='+num+',minimum-scale='+num+',maximum-scale='+num+'" />')
+        var fontNum = document.documentElement.clientWidth / 40;
+        var html = document.getElementsByTagName('html')[0];
+        html.style.fontSize = fontNum + 'px';
+    </script>
+    <script>
+        // 数据变量
+        var user_id = {$user_id};
+        var user_img = "{$ret.head_img_url}";
+        var user_name = "{$ret.nickname}";
+        var arrList = [];
+                // 图说列表
+                $.ajax({
+                type:"POST",
+                url:"/IOS/User/userTextLists.html",
+                data:{
+                    user_id:user_id,
+                    page:1,
+                    pageSize:3
+                },
+                dataType:'JSON',
+                success:function(data){
+                    arrList = data.result;
+                    strPj(arrList);
+                }
+            });
+    </script>
+</head>
+<body>
+    <!-- 头部 -->
+        <div class="head">
+            <div class="head_top">
+                <img src="{$ret.background_url}" alt="主背景图">
+            </div>
+            <div class="head_middle">
+                <div class="head_user_img">
+                    <img src="{$ret.head_img_url}" alt="头像">
+                </div>
+                <div class="head_user">
+                    <div class="head_user_name">
+                        {$ret.nickname}
+                    </div>
+                    <div class="head_user_content"> 
+                        {$ret.signature}
+                    </div>
+                </div>
+            </div>
+            <div class="head_like">
+                <ul>
+                    <li>
+                        <span class="s1">{$ret.attention_count}</span>
+                        <span class="s2">关注</span>
+                    </li>
+                    <li>
+                        <span class="s1">{$ret.fans_count}</span>
+                        <span class="s2">粉丝</span>
+                    </li>
+                    <li>
+                        <span class="s1">{$ret.like_count}</span>
+                        <span class="s2">喜欢</span>
+                    </li>
+                </ul>
+            </div>
+            <div class="head_foot">
+                <div><span>10 </span>篇文章</div>
+            </div>
+        </div>
+        <!-- 内容部分 -->
+        <div class="content">
+            <ul>
+               
+            </ul>
+        </div>
+         <!-- 文章结尾 -->
+        <div class="foot">
+            <div class="foot_content">
+                <span>去看看其他文章，有没有把你的胃口吊起来</span>
+                <div>
+                    <a href="javascript:;">登陆</a>
+                    <i></i>
+                    <a href="javascript:;">注册</a>
+                </div>
+            </div>
+        </div>
+        <script src="__STATIC__/js/tindex.js"></script>
+        <script>    
+            
+        </script>
+    </body>
+</html>

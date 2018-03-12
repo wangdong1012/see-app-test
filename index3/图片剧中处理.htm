@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>图片垂直水平居中</title>
+</head>
+ 
+<body>
+                <div style="width: 500px;height: 500px;overflow: hidden ;margin:0 auto;">
+                <img src="./img/5a8ac08e24b99.jpg" style="position: relative" id="img_id">
+                </div>
+                <script>
+                    
+                    var img = document.getElementById("img_id");
+                    var image = new Image();
+                    var realWidth = 0;//储存图片实际宽度
+                    var realHeight = 0;//储存图片实际高度
+                    //获取图片的宽高
+                    image.src = "./img/5a8ac08e24b99.jpg";
+                    //加载成功的处理
+                    image.onload = function () {
+                        realWidth = image.width;//获取图片实际宽度
+                        realHeight = image.height;//获取图片实际高度
+                        //让img的宽高相当于图片实际宽高的等比缩放，然后再偏移
+                        if (realWidth > realHeight){
+                            img.width = (500/realHeight)*realWidth;//等比缩放宽度
+                            img.height = 500;//跟div高度一致
+                            img.style.left = '-' + ((500/realHeight)*realWidth-500)/2 + 'px';//设置图片相对自己位置偏移为img标签的宽度-高度的一半
+                        }else if (realWidth < realHeight){
+                            img.width =500 ;//跟div高度一致
+                            img.height = (500/realWidth)*realHeight;//等比缩放高度
+                            img.style.top = '-' + ((500/realWidth)*realHeight-500)/2 + 'px';//设置图片相对自己位置偏移为img标签的高度-宽度的一半
+                        }else {
+                            img.width =500 ;
+                            img.height = 500;
+                        }
+                    };
+                    //图片加载失败的处理
+                    img.onerror = function () {
+                        img.src = "./img/5a8ac08e24b99.jpg";
+                        img.width =500 ;
+                        img.height = 500;
+                    }
+                </script>
+</body>
+</html>
