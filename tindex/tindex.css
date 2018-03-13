@@ -216,8 +216,8 @@ body{
     font:1.5rem/2.125rem '微软雅黑';
     color: #555;
     margin-bottom: 1.875rem;
-    float: left;
     width: 100%;
+    max-height: 9999px;
 }
 .caption li{
     float: left;

@@ -45,12 +45,10 @@ function middle(img,img_url,box_width,box_height){
 
 
 function strPj(arrList){
-    // console.log(arrList.lists);
     var urls = [];
     var uls=[];
     var str='';
     $(arrList.lists).each(function(a,b){
-        // console.log(b.img_lists[0])
         var text_id = b.id;
         $.ajax({
             type:"POST",
@@ -107,7 +105,7 @@ function strPj(arrList){
             <!-- 详情 -->
             <div class="caption">
                <div class="caption_content">
-                    ${b.msg}
+                        ${b.msg}
                 </div>
                 <ul>
                     <li>二次元</li>
@@ -121,7 +119,6 @@ function strPj(arrList){
     });
     $('.content ul').html(str);
     $(urls).each(function(a,b){
-        console.log();
-        middle($('.content_img img').eq(a),b,$('.content_img').eq(a)[0].clientWidth,$('.content_img').eq(a)[0].clientHeight)
+        middle($('.content_img img').eq(a),b,$('.content_img').eq(a)[0].clientWidth,$('.content_img').eq(a)[0].clientHeight);
     })
 };

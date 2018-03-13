@@ -35,9 +35,7 @@ function caption(json){
     <div class="caption">
         <h4>暂无数据</h4>
         <div class="caption_content">
-            <span>
             ${json.msg}
-            </sapn>
         </div>
         <ul>
             ${li}

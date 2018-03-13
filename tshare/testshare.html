@@ -26,10 +26,9 @@
         var json = '';
             $.ajax({
                 type:"GET",
-                url:"http://www.xintusee.com/IOS/Text/info.html?text_id="+text_id,
+                url:"http://www.xintusee.com/IOS/Text/info.html?text_id="+Number.parseInt(text_id),
                 dataType:'JSON',
                 success:function(data){
-                    console.log(data)
                     json = data.result;
                     if(json==undefined){
                         $('body').html('<div class="del">该图说已被删除</div>');
