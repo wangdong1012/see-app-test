@@ -24,12 +24,13 @@ function boxHead(json){
     </div>   
     <!-- 参与 -->
     <div class="participate_in">
-        <span class="left">12312参与</span>
+        <span class="left">参与</span>
         <span class="right">立即参与</span>
     </div>`
 
     return str
 };
+
 
 
 function ranking(json){

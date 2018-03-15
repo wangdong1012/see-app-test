@@ -32,6 +32,17 @@
 					$('.box_head').html(boxHead(json));
 					$('.box_ranking_right ul').html(ranking(json.like_lists));
 					$('.box_introduce_content').html(json.bewrite);
+					$.ajax({
+						type:"post",
+						url:"/IOS/Activity/apply_users.html",
+						data:{
+							activity_id:Number.parseInt(activity_id)
+						},
+						dataType:'JSON',
+						success:function(data){
+							$('.left').html(data.result.total+' 参与')
+						}
+					});
                 }
             });
 		  </script>

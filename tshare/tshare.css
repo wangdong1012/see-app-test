@@ -21,7 +21,20 @@
     top: 50%;
     margin-top: -1.4375rem;
     float: left;
+    
 }
+.head .xz{
+    transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    transition: All 0.6s ease-in-out;
+    -webkit-transition: All 0.6s ease-in-out;
+    -moz-transition: All 0.6s ease-in-out;
+    -o-transition: All 0.6s ease-in-out;
+}
+
 .head h2{
     font: 1.75rem/6.5rem '微软雅黑';
     float: left;

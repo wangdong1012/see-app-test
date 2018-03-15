@@ -30,6 +30,7 @@
                 dataType:'JSON',
                 success:function(data){
                     json = data.result;
+                    
                     if(json==undefined){
                         $('body').html('<div class="del">该图说已被删除</div>');
                         return
@@ -41,6 +42,18 @@
                                 middle($('.imgs li img').eq(a),b,$('.imgs li').eq(a)[0].clientWidth,$('.imgs li').eq(a)[0].clientHeight);
                             });
                             $('.see_num1').html(json.see);
+                            $.ajax({
+                                type:"post",
+                                url:"http://www.xintusee.com/IOS/User/getInfo.html",
+                                data:{
+                                    'uid':json.user_id
+                                },
+                                dataType:"JSON",
+                                success:function(data){
+                                    console.log(data.result.signature);
+                                    $('.middle_describe').html(data.result.signature)
+                                }
+                            });
                          });
                     }
                 }

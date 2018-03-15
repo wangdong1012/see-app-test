@@ -67,7 +67,11 @@ body{
 }
 /* 喜欢的信息 */
 .head_like{
-    padding-left: 4rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+}
+.head ul{
+    
 }
 .head_like ul:after{
     display:block;
@@ -78,10 +82,11 @@ body{
     visibility:hidden;
 }
 .head_like li{
+    width: 12rem;
     float: left;
     text-align: center;
-    margin-right: 5.75rem;
 }
+
 .head_like .s1{
     display: block;
     font-size:1.75rem; 
@@ -159,6 +164,7 @@ body{
     margin-bottom: 0.5625rem;
     height: 24.375rem;
     overflow: hidden;
+    border-radius:0.3125rem; 
 
 }
 .content_img span{
@@ -246,7 +252,7 @@ body{
 }
 .comment span{
     float: left;
-    font: 1.5rem/2.75rem '微软雅黑';
+    font: 1.25rem/2.25rem '微软雅黑';
     color: #3f51b5;
 }
 .comment .span3{

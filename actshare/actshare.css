@@ -84,6 +84,7 @@ body{
     float: left;
     font: 1.75rem/5.5rem '微软雅黑';
     color: #bcbcbc;
+    max-height: 100000px;
 }
 .participate_in .right{
     float: right;
@@ -252,6 +253,7 @@ body{
     height: 9rem;
     margin: 0 auto;
     margin-top: 1.0625rem;
+    border-radius: 0.3125rem;
 }
 .box_reward ul span{
     font-size: 1.375rem;
@@ -286,7 +288,7 @@ body{
     padding:2.5rem;
     padding-bottom: 0;
     padding-top: 0;
-    font:1.75rem/2.5rem '微软亚黑';
+    font:1.5rem/2.5rem '微软亚黑';
     color: #656565;
     max-height: 999999px;
 }
@@ -330,7 +332,7 @@ body{
     padding-bottom: 0;
     padding-top: 0;
     color: #656565;
-    font:1.75rem/2.5rem '微软亚黑';
+    font:1.5rem/2.5rem '微软亚黑';
     max-height: 99999px;
 }
 /* 获奖名单 */
@@ -453,7 +455,7 @@ body{
     background: #575757;
     border-radius:0.75rem; 
     color: #fff;
-    font: 1.375rem/2.125rem '微软雅黑';
+    font: 1.375rem/2rem '微软雅黑';
     text-align: center;
     margin-top: 1.4375rem;
 }
