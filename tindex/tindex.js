@@ -31,7 +31,8 @@ function middle(img,img_url,box_width,box_height){
         }else if (realWidth < realHeight){
             // $(img).css();//跟div高度一致
             // $(img).css();//等比缩放高度
-            $(img).css({'width':box_width,'height':(box_height/realWidth)*realHeight,'top':-((box_height/realWidth)*realHeight-box_height)/2,'opacity':1});//设置图片相对自己位置偏移为img标签的高度-宽度的一半
+            $(img).css({'width':box_width,'height':(box_width/realWidth)*realHeight,'top':-((box_width/realWidth)*realHeight-box_height)/2,'opacity':1});//设置图片相对自己位置偏移为img标签的高度-宽度的一半
+            // $(img).css({'width':box_width,'height':(box_height/realWidth)*realHeight,'top':-((box_height/realWidth)*realHeight-box_height)/2,'opacity':1});//设置图片相对自己位置偏移为img标签的高度-宽度的一半
         }else {
             $(img).css({'width':box_width,'height':box_height,'opacity':'1'})
         }
@@ -43,9 +44,9 @@ function middle(img,img_url,box_width,box_height){
     }
 };
 
-
+var urls = [];
 function strPj(arrList){
-    var urls = [];
+   
     var uls=[];
     var str='';
     $(arrList.lists).each(function(a,b){
@@ -117,8 +118,26 @@ function strPj(arrList){
             ${uls[a] == undefined ? "":uls[a]}
         </li>`;
     });
-    $('.content ul').html(str);
+    $('.content ul').html($('.content ul').html()+str);
+
     $(urls).each(function(a,b){
         middle($('.content_img img').eq(a),b,$('.content_img').eq(a)[0].clientWidth,$('.content_img').eq(a)[0].clientHeight);
     })
 };
+
+$('body').ready(function(){
+    var num =0;
+    var off = true;
+    $(this).on('touchmove',function(){
+        num = $(this).scrollTop()-(Number.parseInt($('.foot').offset().top)-window.innerHeight);
+        if(num >= $('.foot')[0].clientHeight&off){
+            off = false;
+            ajax(function(){
+                $('.f5').hide();
+                off = true;
+            });
+            $('.f5').show();
+
+        }
+    })
+})

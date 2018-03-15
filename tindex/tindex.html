@@ -27,22 +27,31 @@
         var user_id = {$user_id};
         var user_img = "{$ret.head_img_url}";
         var user_name = "{$ret.nickname}";
+        var pagenum = 1;
         var arrList = [];
                 // 图说列表
-                $.ajax({
-                type:"POST",
-                url:"/IOS/User/userTextLists.html",
-                data:{
-                    user_id:user_id,
-                    page:1,
-                    pageSize:3
-                },
-                dataType:'JSON',
-                success:function(data){
-                    arrList = data.result;
-                    strPj(arrList);
-                }
-            });
+                ajax();
+                function ajax(fn){
+                    $.ajax({
+                        type:"POST",
+                        url:"/IOS/User/userTextLists.html",
+                        data:{
+                            user_id:user_id,
+                            page:pagenum,
+                            pageSize:3
+                        },
+                        dataType:'JSON',
+                        success:function(data){
+                            pagenum++;
+                            arrList = data.result;
+                            strPj(arrList);
+                            if(typeof(fn)=='function'){
+                                fn();
+                            }
+                        }
+                    });
+                };
+                
     </script>
 </head>
 <body>
@@ -90,6 +99,10 @@
                
             </ul>
         </div>
+        <!-- 刷新 -->
+        <div class="f5">
+            <div></div>
+        </div>
          <!-- 文章结尾 -->
         <div class="foot">
             <div class="foot_content">
@@ -101,6 +114,7 @@
                 </div>
             </div>
         </div>
+        
         <script src="__STATIC__/js/tindex.js"></script>
         <script>    
             
