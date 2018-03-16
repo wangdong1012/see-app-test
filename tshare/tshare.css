@@ -1,3 +1,4 @@
+
 /* 头部浮层 */
 .head{
     height: 6.5rem;
@@ -7,7 +8,7 @@
     top: 0;
     background: #fff;
     width: 36.25rem;
-    z-index: 100;
+    z-index: 20;
     opacity: 0.9;
 }
 .head h1{
@@ -357,6 +358,8 @@
     line-height: 4.125rem;
     color: #000;
     text-align: center;
+    position: relative;
+    z-index: 21;
 }
 .open i{
     display: inline-block;
@@ -375,4 +378,62 @@
     font: 1.875rem/3.125rem '微软雅黑';
     left: 50%;
     margin-left: -7.75rem;
+}
+.hide{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 71rem;
+    background: #000;
+    overflow: hidden;
+    z-index: 100;
+    display: none;
+}
+.hide_foot{
+    position: absolute;
+    width: 100%;
+    height: 1rem;
+    bottom: 1.875rem;
+}
+.hide_foot ul{
+    position: absolute;
+    left: 50%;
+    margin-left: -30px;
+    list-style:none;
+    display:-webkit-box;
+    display:-moz-box;
+    display:-ms-flexbox;
+    display:-webkit-flex;
+    display:flex;
+    -webkit-flex-flow:row nowrap;
+    justify-content:space-around;
+}
+
+.hide .ul{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+.hide .li{
+    width: 100%;
+    height: 100%;
+    float: left;
+    position: relative;
+}
+.hide .li img{
+    width: 100%;
+    position: absolute;
+    top: 50%;
+}
+.hide_foot li{
+    background:#fff;
+    opacity: 0.2;
+    width:0.9375rem;
+    height:0.9375rem;
+    font-weight:bold;
+    text-align:center;
+    border-radius:50%; 
+    margin-left: 0.3125rem;
+    margin-right: 0.3125rem;
 }

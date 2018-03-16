@@ -51,16 +51,6 @@ function ranking(json){
 
 
 
-
-
-
-
-
-
-
-
-
-
 //拖拽
 function drag(){
     var drag = $('.box_NameList_centent ul');
@@ -104,7 +94,8 @@ function drag(){
     }
     
 };
+
 $(document).ready(function(){
     drag();
+    
 })
-

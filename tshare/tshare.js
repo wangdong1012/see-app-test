@@ -23,8 +23,10 @@ function imgs(json){
         urls.push(b.url);
         str += '<li><img src="'+b.url+'" alt="'+b.img_id+'"></li>'
     });
+    
     return str
 };
+
 function caption(json){
     var li = '';
    $( json.tab_lists).each(function(a,b){
@@ -101,19 +103,153 @@ function middle(img,img_url,box_width,box_height){
 
 
 $('body').ready(function(){
+
     $('.open span').on('touchstart',function(){
         $('.imgs').css({'max-height':'999999999999px','overflow':'visible'});
         $('.user').show();
         $('.caption').show();
         $(this).hide();
+        return false; //阻止事件冒泡
     });
     
     $('.head h1').on('touchend',function(){
-        $(this).addClass('xz');
-        this.addEventListener('transitionend',function(){
-            // $(this).css('transform','rotate(0deg)');
-            $(this).removeClass('xz');
-        });
+        if($('.xz').length==0){
+            $(this).addClass('xz');
+            this.addEventListener('transitionend',function(){
+                $(this).removeClass('xz');
+            });
+        }
+        return false; //组织事件冒泡
     });
-
+  
 });
+
+   
+
+    //所有点击触摸交互
+    function fnshow(imgWidth){
+        var handY = 0;
+        function _preventDefault(e) { e.preventDefault(); }//禁止触摸用
+
+        var ev = '';
+        var evnum = '';
+        $('.imgs').eq(0)[0].addEventListener('touchstart',fnstratBody,false);
+        // 点击body
+        function fnstratBody(ev){
+            handY = ev.changedTouches[0].clientY;
+        };
+
+        $('.imgs ul li').on('touchstart',function(){
+            evnum = $(this).index('.imgs ul li');
+        })
+
+        $('.imgs')[0].addEventListener('touchend',fnend,false);
+
+        // 抬起函数
+        function fnend(ev){
+            var handYy = ev.changedTouches[0].clientY;
+            if(handYy-handY<10&handYy-handY>-10){
+                document.body.style.overflow = 'hidden';
+                window.addEventListener('touchmove', _preventDefault);
+                $('.ul').css('left',-evnum*imgWidth);
+                $('.hide_foot li').eq(evnum).css('opacity',1);
+                $('.hide').show();
+                $('.hide_foot ul').css({'margin-left':-$('.hide_foot ul')[0].clientWidth/2});
+                $('.li img').each(function(a,b){
+                    $(this).css('margin-top',-$(this)[0].clientHeight/2);
+                });
+
+                //禁用图片点击
+                $('.imgs')[0].removeEventListener("touchend", fnend, false); 
+                $('.imgs').eq(0)[0].removeEventListener('touchstart',fnstratBody,false);
+                //激活图片轮播
+                $('.hide .ul')[0].addEventListener('touchstart',fnhandx,false);
+                $('.hide .ul')[0].addEventListener('touchend',fnrecovery,false);
+            }
+        };
+
+        var fnhadnx = '';
+        var fnleft = '';
+        //恢复记录坐标
+        function fnhandx(ev){
+            fnhadnx = ev.changedTouches[0].clientX;
+            fnleft =Number.parseInt($('.hide .ul').css('left'))
+        };
+
+        $('.hide .ul')[0].addEventListener('touchmove',fnmove,false);
+
+        function fnmove(ev){
+            var handx = ev.changedTouches[0].clientX-fnhadnx;
+            $('.hide .ul').css('left',handx+fnleft);
+        };
+
+        function fnrecovery(ev){
+            var handx = ev.changedTouches[0].clientX;
+            fnjz();
+             if(handx-fnhadnx <5 & handx-fnhadnx>-5){
+                $('.hide').hide();
+                //移除当年事件
+                $('.hide .ul')[0].removeEventListener('touchend',fnrecovery,false);
+                $('.hide .ul')[0].removeEventListener('touchstart',fnhandx,false);
+
+                //激活列表点击
+                $('.imgs')[0].addEventListener('touchend',fnend,false);
+                $('.imgs').eq(0)[0].addEventListener('touchstart',fnstratBody,false);
+                //激活滑动屏幕
+                document.body.style.overflow = 'auto';
+                window.removeEventListener('touchmove', _preventDefault);
+                $('.hide_foot li').eq(evnum).css('opacity','');
+
+            }else if(handx-fnhadnx<150&handx-fnhadnx>5||handx-fnhadnx>-150&handx-fnhadnx<-5){
+                
+                $('.hide .ul').animate({'left':fnleft},function(){
+                    fnjh();
+                });
+            }else if(handx-fnhadnx>150){
+               
+                $('.hide_foot li').eq(evnum).css('opacity','');
+                $('.hide .ul').stop().animate({'left':(fnleft+imgWidth)>=0 ? 0 : fnleft+imgWidth},function(){
+                    evnum <= 0 ? 0 : evnum--;
+                    $('.hide_foot li').eq(evnum ).css('opacity','1');
+                    fnjh();
+                });
+            }else if(handx-fnhadnx<-150){
+             
+                $('.hide_foot li').eq(evnum).css('opacity','');
+                $('.hide .ul').stop().animate({'left':(fnleft+(-imgWidth))<=-imgWidth*($('.ul li').length-1) ? -imgWidth*($('.ul li').length-1) : fnleft+(-imgWidth)},function(){
+                    evnum >=$('.ul li').length-1 ? $('.ul li').length-1:evnum++;
+                    $('.hide_foot li').eq(evnum ).css('opacity','1');
+                    fnjh();
+                });
+            }
+        };
+        function fnjh(){
+            $('.hide .ul')[0].addEventListener('touchmove',fnmove,false);
+            $('.hide .ul')[0].addEventListener('touchstart',fnhandx,false);
+            $('.hide .ul')[0].addEventListener('touchend',fnrecovery,false);
+        };
+        function fnjz(){
+            $('.hide .ul')[0].removeEventListener('touchmove',fnmove,false);
+            $('.hide .ul')[0].removeEventListener('touchstart',fnhandx,false);
+            $('.hide .ul')[0].removeEventListener('touchend',fnrecovery,false);
+        };
+    };
+
+    
+    function back(backHight,imgWidth,urls){
+        
+        $('.hide').css('height',backHight);
+        $('.ul').css('width',imgWidth*urls.length);
+        var str = '';
+        var str1 = '';
+        if(urls.length>1){
+            for(var i=0;i<urls.length;i++){
+                str += '<li></li>';
+            }
+            $('.hide_foot ul').html(str);
+        }
+        $(urls).each(function(a,b){
+            str1 += '<li class="li" style="width:'+imgWidth+'px;"><img src="'+b+'"></li>' 
+        });
+        $('.ul').html(str1);
+    };

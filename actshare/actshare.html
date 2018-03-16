@@ -18,6 +18,7 @@
 		  <script src="__STATIC__/js/jquery-3.2.0.js"></script>
 		  
 		  <script>
+			  
 			  var activity_id = window.location.search.substr(13);
 			  var json = '';
 			   $.ajax({
@@ -40,8 +41,13 @@
 						},
 						dataType:'JSON',
 						success:function(data){
-							$('.left').html(data.result.total+' 参与')
+							$('.left').html(data.result.total+' 参与');
+							$('.right').on('touchstart',function(){
+								alert(window.navigator.userAgent)
+								// window.webkit.messageHandlers.webTopicPublishClick.postMessage();
+							});
 						}
+						
 					});
                 }
             });

@@ -44,7 +44,12 @@
                         success:function(data){
                             pagenum++;
                             arrList = data.result;
-                            strPj(arrList);
+                            var time = setInterval(function(){
+                                if(strPj){
+                                    strPj(arrList);
+                                    clearInterval(time);
+                                 }
+                            },100)
                             if(typeof(fn)=='function'){
                                 fn();
                             }

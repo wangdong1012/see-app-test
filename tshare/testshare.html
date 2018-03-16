@@ -30,7 +30,6 @@
                 dataType:'JSON',
                 success:function(data){
                     json = data.result;
-                    
                     if(json==undefined){
                         $('body').html('<div class="del">该图说已被删除</div>');
                         return
@@ -38,6 +37,7 @@
                         $('body').ready(function(){
                             $('.imgs ul').html( imgs(json));
                             $('.imgs').after(caption(json)+user(json));
+                            
                             $(urls).each(function(a,b){
                                 middle($('.imgs li img').eq(a),b,$('.imgs li').eq(a)[0].clientWidth,$('.imgs li').eq(a)[0].clientHeight);
                             });
@@ -50,10 +50,13 @@
                                 },
                                 dataType:"JSON",
                                 success:function(data){
-                                    console.log(data.result.signature);
-                                    $('.middle_describe').html(data.result.signature)
+                                    $('.middle_describe').html(data.result.signature);
                                 }
                             });
+                            var backHight = window.innerHeight;
+                            var imgWidth = document.body.scrollWidth;
+                            back(backHight,imgWidth,urls);
+                            fnshow(imgWidth);
                          });
                     }
                 }
@@ -61,7 +64,7 @@
     </script>
 </head>
 <body>
-   
+   <div class="box">
     <!-- 头部浮层 -->
     <div class="head">
         <h1>看见</h1>
@@ -148,6 +151,15 @@
                 <i></i>
                 <a href="javascript:;">注册</a>
             </div>
+        </div>
+    </div>
+</div>
+    <div class="hide">
+        <ul class="ul"></ul>
+        <div class="hide_foot">
+            <ul>
+
+            </ul>
         </div>
     </div>
     <script src="__STATIC__/js/tshare.js"></script>
