@@ -5,8 +5,8 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
     	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 		<title>活动分享</title>
-		<link rel="stylesheet" href="__STATIC__/css/tool.css">
-		<link rel="stylesheet" href="__STATIC__/css/actshare.css">
+		<link rel="stylesheet" href="__STATIC__/css/tool.css?v=222">
+		<link rel="stylesheet" href="__STATIC__/css/actshare.css?v=41231">
 		<!-- 计算rem的比例 -->
 		<script>
   			var num = 1 / window.devicePixelRatio;
@@ -15,216 +15,94 @@
 			var html = document.getElementsByTagName('html')[0];
 			html.style.fontSize = fontNum + 'px';
 		  </script>
+		  <script src="https://static.mlinks.cc/scripts/dist/mlink.min.js"></script>
 		  <script src="__STATIC__/js/jquery-3.2.0.js"></script>
-		  
 		  <script>
-			  
 			  var activity_id = window.location.search.substr(13);
-			  var json = '';
-			   $.ajax({
-                type:"post",
-				url:"/IOS/Activity/Info.html",
-				data:{
-					activity_id:Number.parseInt(activity_id)
-				},
-                dataType:'JSON',
-                success:function(data){
-					json = data.result;
-					$('.box_head').html(boxHead(json));
-					$('.box_ranking_right ul').html(ranking(json.like_lists));
-					$('.box_introduce_content').html(json.bewrite);
-					$.ajax({
-						type:"post",
-						url:"/IOS/Activity/apply_users.html",
-						data:{
-							activity_id:Number.parseInt(activity_id)
-						},
-						dataType:'JSON',
-						success:function(data){
-							$('.left').html(data.result.total+' 参与');
-							$('.right').on('touchstart',function(){
-								alert(window.navigator.userAgent)
-								// window.webkit.messageHandlers.webTopicPublishClick.postMessage();
-							});
-						}
-						
-					});
-                }
-            });
 		  </script>
 	</head>
 	<body>
-		<!-- 头部盒子 -->
-        <div class="box_head">
-			
+		<div class="loging">
+			<div></div>
 		</div>
-		<!-- 排行 -->
-		<div class="box_ranking">
-			<div class="box_ranking_left">
-				<i></i>
-				<h2>活动排行</h2>
+		<div class="box">
+			<!-- 头部盒子 -->
+			<div class="box_head">
+				
 			</div>
-			<div class="box_ranking_right">
-				<ul>
-					
-				</ul>
-				<i></i>
-			</div>
-		</div>
-		<!-- 活动奖励 -->
-		<div class="box_reward">
-			<div class="box_reward_head">
-				<i class="i1"></i>
-				<h2>活动奖励</h2>
-				<i class="i2"></i>
-			</div>
-			<ul>
-				<li>
-					<h4>一等奖</h4>
-					<div>
-						<img src="http://www.xintusee.com/Public/home/img/wzry1.jpg" alt="iphone">
-					</div>
-					<span>iphone</span>
-				</li>
-				<li class="middle">
-					<h4>二等奖</h4>
-					<div>
-						<img src="http://www.xintusee.com/Public/home/img/wzry2.jpg" alt="皮肤">
-					</div>
-					<span>王者荣耀皮肤</span>
-				</li>
-				<li>
-					<h4>三等奖</h4>
-					<div>
-						<img src="http://www.xintusee.com/Public/home/img/wzry3.jpg" alt="皮肤1">
-					</div>
-					<span>王者荣耀皮肤</span>
-				</li>
-			</ul>
-		</div>
-		<!-- 活动介绍 -->
-		<div class="box_introduce">
-			<div class="box_introduce_head">
-				<i></i>
-				<h2>活动介绍</h2>
-			</div>
-			<div class="box_introduce_content">
-				我爱你,我到底挖孔的。的哇哦动静恐怕打卡的我动静啊就打破啊都看完打完就怕我都看得我怕。多久啊破单位大我。
-			</div>
-		</div>
-		<!-- 活动规则 -->
-		<div class="box_rule">
-			<div class="box_rule_head">
-				<i></i>
-				<h2>活动规则</h2>
-			</div>
-			<div class="box_rule_content">
-				我爱你,我到底挖孔的。的哇哦动静恐怕打卡的我动静啊就打破啊都看完打完就怕我都看得我怕。多久啊破单位大我。
-			</div>
-		</div>
-		<!-- 获奖名单 -->
-		<div class="box_NameList">
-			<div class="box_NameList_head">
-				<i class="i1"></i>
-				<h2>获奖名单</h2>
-				<i class="i2"></i>
-			</div>
-			<div class="box_NameList_centent">
-				<ul>
-					<li>
-						<img src="http://www.xintusee.com/Public/home/img/5a37556f70708.jpg" alt="头像">
-						<span>say</span>
-						<div class="right">
-							<h4>第一期</h4>
-							<div></div>
-						</div>
-					</li>
-					<li>
-						<img src="http://www.xintusee.com/Public/home/img/5a37556f70708.jpg" alt="头像">
-						<span>dadada</span>
-						<div class="right">
-							<h4>第一期</h4>
-							<div></div>
-						</div>
-					</li>
-					<li>
-						<img src="http://www.xintusee.com/Public/home/img/5a37556f70708.jpg" alt="头像">
-						<span>的玩家哦啊大奖哦我</span>
-						<div class="right">
-							<h4>第一期</h4>
-							<div></div>
-						</div>
-					</li>
-					<li>
-						<img src="http://www.xintusee.com/Public/home/img/5a37556f70708.jpg" alt="头像">
-						<span>的玩家哦啊大奖哦我</span>
-						<div class="right">
-							<h4>第一期</h4>
-							<div></div>
-						</div>
-					</li>
-					<li>
-						<img src="http://www.xintusee.com/Public/home/img/5a37556f70708.jpg" alt="头像">
-						<span>的玩家哦啊大奖哦我</span>
-						<div class="right">
-							<h4>第一期</h4>
-							<div></div>
-						</div>
-					</li>
-					<li>
-						<img src="http://www.xintusee.com/Public/home/img/5a37556f70708.jpg" alt="头像">
-						<span>的玩家哦啊大奖哦我</span>
-						<div class="right">
-							<h4>第一期</h4>
-							<div></div>
-						</div>
-					</li>
-					<li>
-						<img src="http://www.xintusee.com/Public/home/img/5a37556f70708.jpg" alt="头像">
-						<span>的玩家哦啊大奖哦我</span>
-						<div class="right">
-							<h4>第一期</h4>
-							<div></div>
-						</div>
-					</li>
-					<li>
-						<img src="http://www.xintusee.com/Public/home/img/5a37556f70708.jpg" alt="头像">
-						<span>的玩家哦啊大奖哦我</span>
-						<div class="right">
-							<h4>第一期</h4>
-							<div></div>
-						</div>
-					</li>
-					<li>
-						<img src="http://www.xintusee.com/Public/home/img/5a37556f70708.jpg" alt="头像">
-						<span>dwawddawwd</span>
-						<div class="right">
-							<h4>第一期</h4>
-							<div></div>
-						</div>
-					</li>
-					<li>
-						<img src="http://www.xintusee.com/Public/home/img/5a37556f70708.jpg" alt="头像">
-						<span>1231312dw</span>
-						<div class="right">
-							<h4>第一期</h4>
-							<div></div>
-						</div>
-					</li>
-				</ul>
-				<div class="box_NameList_centent_strip">
-					<div class="box_NameList_centent_float"></div>
+			<!-- 排行 -->
+			<div class="box_ranking">
+				<div class="box_ranking_left">
+					<i></i>
+					<h2>活动排行</h2>
+				</div>
+				<div class="box_ranking_right">
+					<ul></ul>
+					<i></i>
 				</div>
 			</div>
+			<!-- 活动奖励 -->
+			<div class="box_reward">
+				<div class="box_reward_head">
+					<i class="i1"></i>
+					<h2>活动奖励</h2>
+					<i class="i2"></i>
+				</div>
+				<ul>
+				</ul>
+			</div>
+			<!-- 活动介绍 -->
+			<div class="box_introduce">
+				<div class="box_introduce_head">
+					<i></i>
+					<h2>活动介绍</h2>
+				</div>
+				<div class="box_introduce_content">
+				
+				</div>
+			</div>
+			<!-- 活动规则 -->
+			<div class="box_rule">
+				<div class="box_rule_head">
+					<i></i>
+					<h2>活动规则</h2>
+				</div>
+				<div class="box_rule_content">
+					
+				</div>
+			</div>
+			<!-- 获奖名单 -->
+			<div class="box_NameList">
+				<div class="box_NameList_head">
+					<i class="i1"></i>
+					<h2>获奖名单</h2>
+					<i class="i2"></i>
+				</div>
+				<div class="box_NameList_centent">
+					<ul></ul>
+					<div class="box_NameList_centent_strip">
+						<div class="box_NameList_centent_float"></div>
+					</div>
+				</div>
+			</div>
+			<!-- 更多 -->
+			<div class="box_more">
+				<div>更多 &gt;</div>
+			</div>
+			<!-- 列表 -->
+			<div class="imgList">
+				<ul></ul>
+			</div>
+			<!-- 刷新 -->
+			<div class="f5">
+					<div></div>
+				</div>
+			<!-- 结尾 -->
+			<div class="box_foot">
+				<span><i></i></span>
+			</div>
 		</div>
-		<!-- 更多 -->
-		<div class="box_more">
-			<div>更多 &gt;</div>
-		</div>
-		<!-- 结尾 -->
-		<div class="box_foot">
-			<span><i></i>第五周活动结束，我都怕我口味，我啊看得破啊我看到，都挖靠打拼挖矿挖大坑。</span>
-		</div>
-		<script src="__STATIC__/js/actshare.js"></script>
+
+		<script src="__STATIC__/js/actshare.js?v=32221"></script>
 	</body>
 </html>

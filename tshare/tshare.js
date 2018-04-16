@@ -35,7 +35,6 @@ function caption(json){
 
     var str = `<!-- 图说描述 -->
     <div class="caption">
-        <h4>暂无数据</h4>
         <div class="caption_content">
             ${json.msg}
         </div>
@@ -103,7 +102,6 @@ function middle(img,img_url,box_width,box_height){
 
 
 $('body').ready(function(){
-
     $('.open span').on('touchstart',function(){
         $('.imgs').css({'max-height':'999999999999px','overflow':'visible'});
         $('.user').show();
@@ -130,7 +128,6 @@ $('body').ready(function(){
     function fnshow(imgWidth){
         var handY = 0;
         function _preventDefault(e) { e.preventDefault(); }//禁止触摸用
-
         var ev = '';
         var evnum = '';
         $('.imgs').eq(0)[0].addEventListener('touchstart',fnstratBody,false);
@@ -138,11 +135,9 @@ $('body').ready(function(){
         function fnstratBody(ev){
             handY = ev.changedTouches[0].clientY;
         };
-
         $('.imgs ul li').on('touchstart',function(){
             evnum = $(this).index('.imgs ul li');
         })
-
         $('.imgs')[0].addEventListener('touchend',fnend,false);
 
         // 抬起函数
@@ -182,9 +177,10 @@ $('body').ready(function(){
             var handx = ev.changedTouches[0].clientX-fnhadnx;
             $('.hide .ul').css('left',handx+fnleft);
         };
-
         function fnrecovery(ev){
             var handx = ev.changedTouches[0].clientX;
+            var timenum =(imgWidth - Math.abs(handx-fnhadnx))/(imgWidth/200);
+            var timenum1 = 200-timenum;
             fnjz();
              if(handx-fnhadnx <5 & handx-fnhadnx>-5){
                 $('.hide').hide();
@@ -202,21 +198,20 @@ $('body').ready(function(){
 
             }else if(handx-fnhadnx<150&handx-fnhadnx>5||handx-fnhadnx>-150&handx-fnhadnx<-5){
                 
-                $('.hide .ul').animate({'left':fnleft},function(){
+                $('.hide .ul').animate({'left':fnleft},timenum1,function(){
                     fnjh();
                 });
             }else if(handx-fnhadnx>150){
-               
                 $('.hide_foot li').eq(evnum).css('opacity','');
-                $('.hide .ul').stop().animate({'left':(fnleft+imgWidth)>=0 ? 0 : fnleft+imgWidth},function(){
+
+                $('.hide .ul').stop().animate({'left':(fnleft+imgWidth)>=0 ? 0 : fnleft+imgWidth},timenum,function(){
                     evnum <= 0 ? 0 : evnum--;
                     $('.hide_foot li').eq(evnum ).css('opacity','1');
                     fnjh();
                 });
             }else if(handx-fnhadnx<-150){
-             
                 $('.hide_foot li').eq(evnum).css('opacity','');
-                $('.hide .ul').stop().animate({'left':(fnleft+(-imgWidth))<=-imgWidth*($('.ul li').length-1) ? -imgWidth*($('.ul li').length-1) : fnleft+(-imgWidth)},function(){
+                $('.hide .ul').stop().animate({'left':(fnleft+(-imgWidth))<=-imgWidth*($('.ul li').length-1) ? -imgWidth*($('.ul li').length-1) : fnleft+(-imgWidth)},timenum,function(){
                     evnum >=$('.ul li').length-1 ? $('.ul li').length-1:evnum++;
                     $('.hide_foot li').eq(evnum ).css('opacity','1');
                     fnjh();

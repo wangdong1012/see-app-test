@@ -1,0 +1,106 @@
+
+html,body{
+    width: 100%;
+    height: 100%;
+}
+.box1{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    align-items:center;
+    justify-content:center;
+    /* display: none; */
+}
+.box2{
+    width: 100%;
+    height: 100%;
+    display: none;
+    transform: scale(0.5,0.5); 
+    transition:all 0.5s;
+}
+body .box3{
+    transform: scale(1,1);
+}
+.sign_up .head{
+    font-size: 1.625rem;
+    line-height: 1.75rem;
+    margin-bottom: 3.25rem;
+}
+.brand{
+    width: 34.125rem;
+    height: 50.625rem;
+    margin-bottom: 1.375rem;
+
+}
+.brand ul{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-wrap:wrap;
+    justify-content:space-between;
+    align-content:space-between;
+}
+.brand li{
+    width: 16.25rem;
+    height: 24.5rem;
+    text-align: center;
+    overflow: hidden;
+}
+.brand li img{
+    width: 100%;
+    height: 100%;
+}
+.brand li .info{
+	width: 0;
+	height: 100%;
+    margin: 0 auto;
+    display:none;
+    background: red;
+}
+.but_father{
+    text-align: right;
+}
+.but{
+    display: inline-block;
+    width: 9.375rem;
+    height: 4.25rem;
+    border: 1px solid #b7b7b7;
+    text-align: center;
+    line-height: 4.25rem;
+    font-size: 1.625rem;
+}
+.mi{
+    width: 31.25rem;
+    overflow: hidden;
+    margin: 0 auto;
+}
+
+.box2 .img{
+    width: 100%;
+    height: 31.125rem;
+    overflow: hidden;
+    margin-top: 6.25rem;
+    margin-bottom: 0.75rem;
+}
+.box2 .img img{
+    width: 100%;
+    height: 100%;
+}
+.msg{
+    font-size: 1.625rem;
+    line-height: 7.5rem;
+}
+.mr{
+    text-align: right;
+    width: 100%;
+}
+.add{
+    display: inline-block;
+    width: 10rem;
+    height: 4.125rem;
+    font-size: 1.625rem;
+    text-align: center;
+    line-height: 4.125rem;
+    background: #fc5151;
+    border-radius: 2.25rem;
+}

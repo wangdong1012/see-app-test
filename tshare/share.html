@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <META HTTP-EQUIV="pragma" CONTENT="no-cache"> 
+    <META HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate"> 
+    <META HTTP-EQUIV="expires" CONTENT="0">
+    <title>话题分享</title>
+    <link href="__STATIC__/css/tshare.css?v=1.1" type="text/css" rel="stylesheet" />
+    <link href="__STATIC__/css/tool.css" type="text/css" rel="stylesheet" />
+    <script src="__STATIC__/js/jquery-3.2.0.js"></script>
+    <!-- 计算rem的比例 -->
+    <script>
+        var num = 1 / window.devicePixelRatio;
+        document.write('<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale='+num+',minimum-scale='+num+',maximum-scale='+num+'" />')
+        var fontNum = document.documentElement.clientWidth / 40;
+        var html = document.getElementsByTagName('html')[0];
+        html.style.fontSize = fontNum + 'px';
+    </script>
+    <script src="https://static.mlinks.cc/scripts/dist/mlink.min.js"></script>
+    <script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+    <script>
+        //获取id。
+        var text_id = window.location.search.substr(9);
+        var urls = [];
+        var json = '';
+            $.ajax({
+                type:"GET",
+                url:"http://www.xintusee.com/IOS/Text/info.html?text_id="+Number.parseInt(text_id),
+                dataType:'JSON',
+                success:function(data){
+                    json = data.result;
+                    if(json==undefined){
+                        $('body').html('<div class="del">该图说已被删除</div>');
+                        return
+                    }else{
+                        $('body').ready(function(){
+                            $('.imgs ul').html( imgs(json));
+                            $('.imgs').after(caption(json)+user(json));
+                            
+                            $(urls).each(function(a,b){
+                                middle($('.imgs li img').eq(a),b,$('.imgs li').eq(a)[0].clientWidth,$('.imgs li').eq(a)[0].clientHeight);
+                            });
+                            $('.see_num1').html(json.see);
+                            $.ajax({
+                                type:"post",
+                                url:"http://www.xintusee.com/IOS/User/getInfo.html",
+                                data:{
+                                    'uid':json.user_id
+                                },
+                                dataType:"JSON",
+                                success:function(data){
+                                    $('.middle_describe').html(data.result.signature);
+
+                                }
+                            });
+                            var str='';
+                            var backHight = window.innerHeight;
+                            var imgWidth = document.body.scrollWidth;
+                            back(backHight,imgWidth,urls);
+                            fnshow(imgWidth);
+                            $.ajax({
+                                type:"post",
+                                url:"http://www.xintusee.com/IOS/Text/ntextList.html",
+                                data:{
+                                    'text_id':text_id,
+                                    'user_id':json.user_id
+                                },
+                                dataType:"JSON",
+                                success:function(data){
+                                    $(data.result).each(function(a,b){
+                                        str+=`<li>
+                                                <div class="more_content_left">
+                                                    <img src="${b.url}" alt="">
+                                                </div>
+                                                <div class="more_content_right">
+                                                    <span>${b.msg}</span>
+                                                    <div class="more_content_right_bottom">
+                                                        <span>
+                                                            ${json.nickname}
+                                                        </span>
+                                                        <i>${b.create_time_info}</i>
+                                                    </div>
+                                                </div>
+                                            </li>`
+                                    })
+                                    $('.more_content ul').html(str);
+                                   
+                                }
+                            });
+
+                            new Mlink({
+                                mlink: "https://skl3ip.mlinks.cc/Absb",
+                                button: $('.head a'),
+                                autoLaunchApp : false,
+                                autoRedirectToDownloadUrl: true,
+                                downloadWhenUniversalLinkFailed: false,
+                                inapp : false,
+                                params: {'id':Number.parseInt(text_id),'type':'text'}
+                            })
+                            
+                            new Mlink({
+                                mlink: "https://skl3ip.mlinks.cc/Absb",
+                                button: $('.app a'),
+                                autoLaunchApp : false,
+                                autoRedirectToDownloadUrl: true,
+                                downloadWhenUniversalLinkFailed: false,
+                                inapp : false,
+                                params: {'id':Number.parseInt(text_id),'type':'text'}
+                            })
+
+                            new Mlink({
+                                mlink: "https://skl3ip.mlinks.cc/Absb",
+                                button: $('.foot_content div a'),
+                                autoLaunchApp : false,
+                                autoRedirectToDownloadUrl: true,
+                                downloadWhenUniversalLinkFailed: false,
+                                inapp : false,
+                                params: {'id':Number.parseInt(text_id),'type':'register'}
+                            })
+
+                         });
+                    }
+                }
+            });
+    </script>
+</head>
+<body>
+   <div class="box">
+    <!-- 头部浮层 -->
+    <div class="head">
+        <h1>看见</h1>
+        <h2>TO SEE</h2>
+        <a href="javascript:;">APP内浏览</a>
+    </div>
+    <!-- 图片阵列 -->
+    <div class="imgs">
+        <ul>
+            
+        </ul>
+    </div>
+    
+    <!-- 展开 -->
+    <div class="open">
+        <span>
+        展开全文
+        <i></i>
+        </span>        
+    </div>
+    <!-- 浏览数和评论数 -->
+    <div class="see">
+        <i class="see_ico1"></i>
+        <span class="see_num1">17338</span>
+        <i class="see_ico2"></i>
+        <span class="see_num2">332</span>
+    </div>
+    <!-- 评论详细 -->
+    <div class="comment">
+        <ul>
+            
+        </ul>
+    </div>
+    <!-- 打开app -->
+    <div class="app">
+        <a href="javascript:;">打开APP参与互动</a>
+        <div></div>
+    </div>
+    <!-- 更多文章 -->
+    <div class="more">
+        <div class="more_head">
+            <i></i>
+            <h2>更多文章</h2>
+        </div>
+        <div class="more_content">
+            <ul>
+                <li>
+                    <div class="more_content_left">
+                        <img src="http://www.xintusee.com/Public/home/img/5a8ac08e24b99.jpg" alt="">
+                    </div>
+                    <div class="more_content_right">
+                        <span>如果今天可以休息，我希望守护在你身边知道你的手机没电。</span>
+                        <div class="more_content_right_bottom">
+                            <span>
+                                win
+                            </span>
+                            <i>今天3:24</i>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="more_content_left">
+                        <img src="http://www.xintusee.com/Public/home/img/5a8cbf1abe5f7.jpg" alt="">
+                    </div>
+                    <div class="more_content_right">
+                        <span>如果今天可以休息，我希望守护在你身边知道你的手机没电。</span>
+                        <div class="more_content_right_bottom">
+                            <span>
+                                可达到
+                            </span>
+                            <i>今天5:24</i>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!-- 文章结尾 -->
+    <div class="foot">
+        <div class="foot_content">
+            <span>去看看其他文章，有没有把你的胃口吊起来</span>
+            <div>
+                <a href="javascript:;">登陆</a>
+                <i></i>
+                <a href="javascript:;">注册</a>
+            </div>
+        </div>
+    </div>
+</div>
+    <div class="hide">
+        <ul class="ul"></ul>
+        <div class="hide_foot">
+            <ul>
+
+            </ul>
+        </div>
+    </div>
+    <script>
+        // 微信调用
+		var appId="{$JSSDK.appId}";
+		var timestamp="{$JSSDK.timestamp}";
+		var nonceStr="{$JSSDK.nonceStr}";
+		var signature="{$JSSDK.signature}";
+		
+		var link =  window.location.href;
+		var title ="{$ret.nickname}"+' 的图说';
+		var desc = "{$ret.msg}";
+		var imgUrl ="{$ret.img_lists.0.url}";
+
+		var ip = "{$client_ip}";
+    
+    
+    </script>
+    <script src="http://pv.sohu.com/cityjson?ie=utf-8"></script>
+    <script src="__STATIC__/js/tshare.js"></script>
+    <script src="__STATIC__/js/wx.js"></script>
+   <script src="__STATIC__/js/Invitation.js"></script>
+</body>
+
+</html>

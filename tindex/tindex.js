@@ -25,15 +25,15 @@ function middle(img,img_url,box_width,box_height){
         realHeight = image.height;//获取图片实际高度
         //让img的宽高相当于图片实际宽高的等比缩放，然后再偏移
         if (realWidth > realHeight){
-            // $(img).css();//等比缩放宽度
-            // $(img).css();//跟div高度一致
-            $(img).css({'width':(box_width/realHeight)*realWidth,'height':box_height,'left':-((box_width/realHeight)*realWidth-box_width)/2,'opacity':1});//设置图片相对自己位置偏移为img标签的宽度-高度的一半
+            if(realWidth/realHeight>=1.51){
+                $(img).css({'width':(box_height/realHeight)*realWidth,'height':box_height,'left':-((box_height/realHeight)*realWidth-box_width)/2,'opacity':1});//设置图片相对自己位置偏移为img标签的宽度-高度的一半
+            }else{
+                $(img).css({'width':box_width*1.51,'height':box_height*1.51,'left':-(box_width*1.51-box_width)/2,'top':-(box_height*1.51-box_height)/2,'opacity':1});//设置图片相对自己位置偏移为img标签的宽度-高度的一半
+            }
         }else if (realWidth < realHeight){
-            // $(img).css();//跟div高度一致
-            // $(img).css();//等比缩放高度
             $(img).css({'width':box_width,'height':(box_width/realWidth)*realHeight,'top':-((box_width/realWidth)*realHeight-box_height)/2,'opacity':1});//设置图片相对自己位置偏移为img标签的高度-宽度的一半
-            // $(img).css({'width':box_width,'height':(box_height/realWidth)*realHeight,'top':-((box_height/realWidth)*realHeight-box_height)/2,'opacity':1});//设置图片相对自己位置偏移为img标签的高度-宽度的一半
         }else {
+           
             $(img).css({'width':box_width,'height':box_height,'opacity':'1'})
         }
     };
@@ -45,10 +45,10 @@ function middle(img,img_url,box_width,box_height){
 };
 
 var urls = [];
-function strPj(arrList){
-   
+function strPj(data){
     var uls=[];
     var str='';
+    var arrList = data.result;
     $(arrList.lists).each(function(a,b){
         var text_id = b.id;
         $.ajax({
@@ -76,8 +76,7 @@ function strPj(arrList){
                 }
             }
         });
-        urls.push(b.img_lists[0].url);
-        
+        urls.push(b.url == undefined ? b.img_lists[0].url : b.url);
         str += `<li class="li">
             <div class="content_head">
                 <div class="content_head_user">
@@ -90,14 +89,14 @@ function strPj(arrList){
             </div>
             <!-- 图片 -->
             <div class="content_img">
-                <img src="${b.img_lists[0].url}" alt="第一张图">
-                
+                <span class="${b.ltype=="topic" ? "show":"hide"}"></span>
+                <img type="${b.ltype}" id="${b.id}" src="${b.url == undefined ? b.img_lists[0].url : b.url}" alt="第一张图">
             </div>
         <!-- 学校 -->
             <div class="content_school">
                 <div class="content_school_left">
                     <i></i>
-                    <span>${b.tab_area =="" ? "地球":b.tab_area}</span>
+                    <span>${b.area =="" || b.area ==null ? "地球":b.area}</span>
                 </div>
                 <div class="content_school_right">
                     <span>${b.see} </span>人阅读
@@ -106,13 +105,9 @@ function strPj(arrList){
             <!-- 详情 -->
             <div class="caption">
                <div class="caption_content">
-                        ${b.msg}
+                    ${b.msg == undefined ? b.description:b.msg}
                 </div>
-                <ul>
-                    <li>二次元</li>
-                    <li>手绘</li>
-                    <li>萝莉</li>
-                </ul>
+                <ul>${fnbq(b.tab_lists)}</ul>
             </div>
             <!-- 评论详细 -->
             ${uls[a] == undefined ? "":uls[a]}
@@ -120,14 +115,60 @@ function strPj(arrList){
     });
     $('.content ul').html($('.content ul').html()+str);
 
+
+
+    $('.content_img img').each(function(a,b){
+            var headY=0;
+            var headX = 0;
+            var num= 0;
+            var that='';
+            b.addEventListener('touchstart',function(ev){
+                headX = ev.changedTouches[0].clientX;
+                headY = ev.changedTouches[0].clientY;
+                num = a;
+                that =this;
+            });
+            
+            b.addEventListener('touchend',function(ev){
+                var headYy = ev.changedTouches[0].clientY;
+                var headXx = ev.changedTouches[0].clientX;
+                if(Math.abs(headY-headYy)<10&&Math.abs(headX-headXx)<10){
+                    new Mlink({
+                        mlink: "https://skl3ip.mlinks.cc/Absb",
+                        button: $(that),
+                        autoLaunchApp : false,
+                        autoRedirectToDownloadUrl: true,
+                        downloadWhenUniversalLinkFailed: false,
+                        inapp : false,
+                        params: {'id':$(that).attr('id'),'type':$(that).attr('type')}
+                    })
+                }
+            }); 
+    });
+
+    $('.head_foot span').html(data.result.total);
+
     $(urls).each(function(a,b){
         middle($('.content_img img').eq(a),b,$('.content_img').eq(a)[0].clientWidth,$('.content_img').eq(a)[0].clientHeight);
     })
 };
 
+function fnbq(tab){
+    var str='';
+    if(tab.length<=0){
+        return ''
+    }else{
+        $(tab).each(function(a,b){
+            str+='<li>'+b.text+'</li>';
+        });
+        return str
+    }
+    
+};
 $('body').ready(function(){
     var num =0;
     var off = true;
+    
     $(this).on('touchmove',function(){
         num = $(this).scrollTop()-(Number.parseInt($('.foot').offset().top)-window.innerHeight);
         if(num >= $('.foot')[0].clientHeight&off){

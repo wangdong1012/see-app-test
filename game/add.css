@@ -1,0 +1,122 @@
+
+img{
+    display: block;
+}
+.img_head{
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    min-height: 4.25rem;
+}
+.img_head img{
+    width: 100%;
+}
+.dw{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding-bottom: 1.5rem;
+    /* margin-bottom:  */
+}
+.dw li{
+    height: 3.125rem;
+    margin-bottom: 2.75rem;
+}
+.img_head li span{
+    font-size: 1.625rem;
+    line-height: 3.125rem;
+    background: rgba(255, 255, 255,0.4);
+    margin-left: 1.75rem;
+    padding-left: 1.0625rem;
+    padding-right: 1.0625rem;
+    border-radius:1rem; 
+    float: left;
+}
+.img_foot{
+    height: 4.25rem;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    z-index: 100;
+}
+.num{
+    float: left;
+    line-height: 4.25rem;
+    color: #fff;
+    margin-left: 2.25rem;
+    font-size: 1.625rem;
+}
+.img_foot i{
+    float: right;
+    width: 2.5rem;
+    height: 2.5rem;
+    margin-top: 1.3125rem;
+    
+    margin-right: 1.75rem;
+    background: url('./img/bottom.png') no-repeat;
+    background-size:100% 100%; 
+}
+.img_foot .up{
+    background: url('./img/up.png') no-repeat;
+    background-size:100% 100%; 
+}
+
+.like{
+    width: 2.5rem;
+    height: 2.5rem;
+    background: url('./img/like.png') no-repeat;
+    background-size:100% 100%; 
+    position: absolute;
+    right: 1.75rem;
+    z-index: 100;
+    bottom: 5rem;
+}
+.img_list li{
+    width: 100%;
+    overflow: hidden;
+}
+.img_list li img{
+    width: 100%;
+}
+.fli{
+    position: fixed;
+    bottom: 1.25rem;
+    width: 100%;
+    text-align: center;
+}
+input{
+    background:none;    
+    outline:none;    
+    border:0px;  
+    width: 100%;
+    height:100%;
+    opacity: 0;
+    border-radius:50%; 
+}
+.fli span{
+    border: 2px solid #bbbbbb;
+    display: inline-block;
+    width: 12.5rem;
+    height: 12.5rem;
+    background: #fff;
+    border-radius:50% ;
+    overflow: hidden;
+}
+.fli i{
+    position: absolute;
+    width: 1.875rem;
+    height: 1.875rem;
+    background: url('./img/add.png') no-repeat;
+    background-size:100% 100%; 
+    left: 50%;
+    top: 50%;
+    margin-left: -0.9375rem;
+    margin-top: -0.9375rem;
+}
+/* .red{
+    background: red;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100px;
+} */

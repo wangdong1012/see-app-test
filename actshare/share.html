@@ -1,0 +1,886 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+<title>看见</title>
+<script src="__STATIC__/js/jquery-2.2.3.min.js"></script>
+<link rel="shortcut icon" type="image/x-icon" href="http://www.xintusee.com/Public/home/img/favicon.ico" media="screen" />
+<style>
+	body{
+		margin:0px;
+		padding:0px;
+		background-color: #eef1f5;
+	}
+	.title-box{
+		margin: 2.5vw;
+		position:relative;
+	}
+	
+	.head-img{
+		width:100%;
+	}
+	
+	.title{
+		padding:3vw;
+		border-radius: 1.5vw;
+		background-color: white;
+		position:relative;
+		box-shadow: 0px 0px 0px 1px #dcdcdc;
+	}
+	.arrow{
+		position:absolute;
+		z-index:1;
+		left: calc(-2vw + 1px);
+		border-style: solid;
+		border-width: 1.5vw 2vw 1.5vw 0vw;
+		border-color: rgba(0,0,0,0) rgba(255,255,255,1) rgba(0,0,0,0) rgba(0,0,0,0);
+	}
+	.content-box{
+		margin: 2.5vw;
+		border: 1px solid #dfe6f0;
+		background-color: white;
+		border-radius:2vw;
+	}
+	.user-box{
+		position:relative;
+		overflow:hidden;
+		padding: 3vw 3vw 1vw 3vw;
+	}
+	.user-box>div:nth-child(1){
+		vertical-align: middle;
+		display:inline-block;
+		width: 18vw;
+		height: 18vw;
+		border-radius:50%;
+		background-repeat:no-repeat;
+		background-size:100% 100%;
+		background-position:center center;
+	}
+	.user-box>div:nth-child(2){
+		vertical-align: middle;
+		display:inline-block;
+		padding-left:3vw;
+	}
+	.dz{
+		display: inline-block;
+		width:20vw;
+		z-index: 10;
+		font: 16px/60px "微软雅黑";
+		position: absolute;
+		right: 0;
+		top: -20px;
+		color: #ACAFB6;
+	}
+	.dz i{
+		position: relative;
+		font: 25px/30px "微软雅黑";
+		bottom: -3px;
+		transition:1s;
+	
+	}
+	.nickname{
+		padding-bottom:1vw;
+		width: 62vw;
+		position: relative;
+		font: 16px/20px "微软雅黑";
+		height: 20px;
+		
+	}
+	#nickname{
+		position: absolute;
+		left: 0;
+		max-width: 40vw;
+		font: 16px/20px "微软雅黑";
+		overflow: hidden; 
+		text-overflow:ellipsis; 
+		white-space: nowrap;
+	
+		
+	}
+	.time-box{
+		font-size: 14px;
+		color: #ACAFB6;
+	}
+	.time-box span{
+		display: block;
+	}
+	.time{
+		padding-right:2vw;
+	}
+	.time:before{
+		content: " ";
+		display:inline-block;
+		width:3vw;
+		height:3vw;
+		background-image:url(/Public/static/img/%E6%97%B6%E9%97%B423x.png);
+		background-repeat:no-repeat;
+		background-position:center;
+		background-size:100% 100%;
+		margin-right: 1vw;
+	}
+	
+	.area{
+		display:inline-block;
+		max-width: 120px;
+		word-break:keep-all;/* 不换行 */
+		white-space:nowrap;/* 不换行 */
+		overflow:hidden;/* 内容超出宽度时隐藏超出部分的内容 */
+		text-overflow:ellipsis;
+	}
+	.area i{
+		display: inline-block;
+		width:3vw;
+		height:3vw;
+		background-image: url(/Public/static/img/area.png);
+		background-repeat:no-repeat;
+		background-position:center;
+		background-size:100% 100%;
+		margin-right: 1vw;
+	}
+	
+	.info-box{
+		padding: 0px 3vw 0px 3vw;
+	}
+	
+	.info-tag>span{
+		height:3.5vw;
+		padding: 0.1vw 0.5vw;
+		font-size: 2.7vw;
+		border:1px solid #ffc6c6;
+		color:#ff5151;
+	}
+	.call{
+		font-size: 3.5vw;
+		color: #f73451;
+	}
+	
+	.tag-box{
+		padding: 4vw;
+	}
+	.tag-box>span{
+		color: #93a0af;
+		border: 1px solid #d9e3ee;
+		/*font-size: 3vw;*/
+		padding:0.5vw 3vw;
+		border-radius: 3vw;
+		margin-right: 1vw;
+		display: inline-block;
+		margin-bottom: 1vw;
+		font-size: 13px;
+	}
+	.img-box{
+		padding-bottom: 3vw;
+	}
+	.img-box>img{
+		width:100%;
+		height: auto;
+		display: block;
+		margin-bottom: 5px;
+	}
+	.button{
+		position:fixed;
+		left:0px;
+		right:0px;
+		bottom:0px;
+		z-index: 30;
+	}
+	.button a{
+		text-decoration: none;
+		display: block;
+		width: 95vw;
+		text-align: center;
+		background: rgba(255,99,71,.8);
+		border-radius: 10px;
+		line-height: 40px;
+		color: #fff;
+		margin: 0 auto;
+	}
+	.button>img{
+		width:100%;
+		height:auto;
+	}
+	.close{
+		position: absolute;
+		left: 0px;
+		width: 5vw;
+		height: 5vw;
+		top: 0px;
+	}
+	.download{
+		position: absolute;
+		left: 0px;
+		right: 0px;
+		top: 0px;
+		bottom: 0px;
+	}
+	h2{	
+		position: relative;
+	    top: 2vw;
+	    left: 0;
+	    margin: 0;
+	    padding: 0;
+	    width: 100vw;
+	    height: 30px;
+	    z-index: 5;
+	}
+	h2 img{
+		width: 100%;
+		height: 100$;
+	}
+	.dwlog{
+		width: 12vw;
+	    height: 12vw;
+	    background: url(../../Public/home/img/see.png);
+	    position: absolute;
+	    background-size: 100% 100%;
+	    top: -2vw;
+	    left: 2vw;
+	}
+	.font{
+		margin-bottom: 3vw;
+	}
+	h1{
+		display: none;
+	}
+	.tc{
+		position: fixed;
+		left: 20px;
+		top:20px ;
+		z-index: 100;
+		background: rgba(0,0,0,.5);
+		color: #fff;
+		width: 60vw;
+		height: 20vw;
+		border-radius: 10px;
+		font:20px/20vw "微软雅黑";
+		text-align: center;
+		left: 20vw;
+		top: 40vh;
+		opacity: 0;
+		display: none;
+		transition: 1s;
+	}
+	.center{
+		font: 18px/20px "微软雅黑";
+		color: red;
+		text-align: center;
+	}
+	
+	.minddle{
+		text-align: center;
+	}
+	.minddle span{
+		color: red;
+	}
+	.none{
+		display: none;
+	}
+	.uid{
+		display: inline-block;
+		width: 15vw;
+		height: 15vw;
+		/*background: red;*/
+		padding: 1vw;
+	}
+	.uid img{
+		width: 100%;
+		height: 100%;
+		border-radius:50% ;
+	}
+	.sp{
+		width: 100%;
+		height: 40vh;
+	}
+	.m-player{
+		width: 100%;
+		height: 32vh;
+	}
+	.m_player_img{
+		width: 94%;
+		height: 32vh;
+		position: absolute;
+		top: 3vw;
+		left: 3vw;
+		z-index: 10;
+	}
+	.m_player_play{
+		position: absolute;
+		left: 33vw;
+		top: 14vw;
+		width: 30vw;
+		height: 30vw;
+		border-radius:50% ;
+		z-index: 11;
+		
+	}
+	.boximg-h{
+		position: relative;
+	    margin-bottom: 1vw;
+	    overflow: hidden;
+	    border-radius: 2vw;
+	    width: 30vw;
+	    height: 30vw;
+	    display: inline-block;
+	    margin-left: 1.1vw;
+	}
+
+	.boximg-h img{
+		position: absolute;
+		width: 100%;
+		height: 100%;
+	}
+	.font{
+		display: none;
+	}
+		.load{
+		position: absolute;
+		bottom: -102px;
+		width: 95vw;
+		left: 2.5vw;
+		height: 100px;
+		font-size: 16px;
+    	color: #333;
+    	text-align: center;
+    	background: #fff;
+    	border-radius:2vw ;
+    	line-height: 100px;
+    	display: none;
+	}
+.load span{
+	display: inline-block;
+	width: 100px;
+	height: 100px;
+	background: url(/Public/home/img/ajax-loader_1.gif);
+	background-size:100% 100% ;
+	vertical-align: middle;
+}
+.load i{
+	display: inline-block;
+	height: 100px;
+	line-height: 100px;
+	vertical-align: middle;
+}
+#text{
+	position: relative;
+}
+.tc_imgbox{
+		width:100vw;
+		height: 100vh;
+		background: rgba(0,0,0,.8);
+		position: fixed;
+		top: 0;
+		z-index: 100;
+		display: none;
+		overflow: hidden;
+		
+	}
+	.tc_imgbox .span{
+		position: fixed;
+		top: 1vh;
+		left: 84vw;
+		color: #fff;
+		width: 10vw;
+		height: 10vw;
+		text-align: center;
+		line-height: 10vw;
+		
+	}
+	.imgboxall{
+		width: 1000vw;
+		white-space : nowrap; 
+		margin-top:6vh;
+		margin-right: -5vw;
+		overflow: hidden;
+		position: relative;
+	}
+	.oneimgbox img{
+		width: 96vw;
+		height: auto;
+		max-height: 92vh;
+	}
+	.oneimgbox{
+		float: left;
+		width: 96vw;
+		max-height: 93vh;
+		background: #fff;
+		padding: 1vh 2vw 2vw 2vw;
+		position: relative;
+	}
+	.oneimgbox img{
+		width: 96vw;
+		height: auto;
+		max-height: 92vh;
+	}
+	.msg_yc{
+		display: none;
+	}
+	.oneimgbox p{
+		width: 96vw;
+		white-space :  normal;
+	}
+	.ft1{
+	background: rgba(0,0,0,.4);
+	position: absolute;
+	bottom:0;
+	color: #fff;
+	font-size: 15px; 
+	line-height: 22px;
+	margin-top: 0;
+	}
+	.ft{
+	font-size: 15px;
+	line-height: 20px;
+	margin-top: 2vh;
+	margin-top: 10px;
+	display: block;
+	line-height:22px;
+	}
+	.yema{
+		position: absolute;
+		text-align: center;
+		right: 4vw;
+		top:7vw;
+	}
+	.red{
+		color: red;
+		font: 4vw/6vw "微软雅黑";
+	}
+	.fff{
+		color: #000;
+		font: 4vw/6vw "微软雅黑";
+	}
+	.balck{
+		font: 4vw/6vw "微软雅黑";
+	}
+	.yema span{
+		float: left;
+	}
+	.soo{
+	width: 100%;
+	margin-bottom: 1vw;
+	margin-top: 2vw;
+	}
+	.soo i{
+		display: inline-block;
+		width: 3vw;
+		height: 3vw;
+		background: url(/Public/home/img/xx.png);
+		background-size:100% 100%;
+		margin-right: 2vw;
+	}
+	.soo span{
+		font-size:3.4vw ;
+		color: #9ea0af;
+	}
+</style>
+<script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+</head>
+<body>
+	<div class="tc_imgbox">
+		<span class="span">关 闭</span>
+		<div class="imgboxall">
+		</div>
+	</div>
+	<div class="tc">
+		对不起您已经点过赞
+	</div>
+	<h2>
+		<img src="../../Public/home/img/分享页面悬浮1024x60px.png"/>
+		<div class="dwlog"></div>
+	</h2>
+	<div class="title-box">
+		<img src="{$retArr['img_lists'][0]['url']}" class="head-img" />
+		<div class="title center">
+		 {$name}
+		</div>
+	</div>
+	
+	<div class="title-box">
+    	<div class="title">
+           	 {$prize}
+        </div>
+   </div>
+   <volist name="ret" id="l" offset="0" length="3">
+    <div class="content-box" datauid="{$l.user_id}">
+    	<div class="user-box">
+        	<div style="background-image: url('{$l.head_img_url}');"></div>
+            <div>
+                <div class="nickname">
+                	<span id="nickname">
+                		{$l.nickname}
+                	</span>
+                	<div dataid={$l.text_id} zan={$l.like_count} class="dz">
+		        		<i>♥</i>：<span>{$l.like_count}</span>
+		        	</div>
+                </div>
+                <div class="time-box">
+                    <span class="time">{$l.create_time_info}</span>
+                    <span class="area"><i></i>{$l.area}</span>
+                </div>
+            </div>
+            <div class="soo">
+            	<i></i>
+            	<span>{$l.school_name}</span>
+            </div>
+    	</div>
+        <div class="info-box">
+        	<a class="info-tag">
+            	<if condition="($l.review_count egt 20) OR ($l.like_count egt 50)">
+                <span>热门</span>
+                </if>
+            </a>
+            <a class="info">{$l.msg}</a>
+            <a class="call">
+            <volist name="l.call_list" id="list">
+				@{$list.nickname}
+            </volist>
+            </a>
+        </div>
+        <div class="img-box">
+        	<volist name="l.img_lists" id="list" >
+        		<div class="boximg-h">
+					<img src="{$list.url}" />
+          		</div>
+			</volist>
+        </div>
+    </div>
+    </volist>
+	<div id="text">
+		<div class="load">
+    		<span></span><i>正在加载中。。。</i>
+    	</div>
+	</div>
+    <div class="button" id="button">
+        <a href="http://a.app.qq.com/o/simple.jsp?pkgname=com.oasis.seen" >点我参与活动</a>
+    </div>
+	<script src="http://pv.sohu.com/cityjson?ie=utf-8"></script>
+	
+	<script type="text/javascript">
+    	var page = 1;
+		var activity_id = {$activity_id};
+		var json='';
+		//微信调用
+			var appId="{$JSSDK.appId}";
+			var timestamp="{$JSSDK.timestamp}";
+			var nonceStr="{$JSSDK.nonceStr}";
+			var signature="{$JSSDK.signature}";
+			var ip = "{$client_ip}";
+			var link =  window.location.href;
+			var title ="{$name}";
+			var desc = $('.title').eq(1).html();
+			var imgUrl = "{$retArr['img_lists'][0]['url']}";
+		function fnajax(){
+				$.ajax({
+	    		type:"POST",
+	    		url:"applytHot.html",
+	    		data:{
+					activity_id:activity_id,
+					page:page,
+					pageSize:3,
+				},
+				dataType:'JSON',
+				success:function(data){
+					var strAppend = '';
+					json = data['result']['lists'];
+					var num=json.length;
+					var rm='';
+					page = parseInt(data['result']['page'])+1;
+					for(var i=0;i<num;i++)  
+					{
+						var call='';
+						var str="";
+						var imglist = json[i]['img_lists'];
+						var tab='';
+						for(var j=0;j<imglist.length;j++){
+							str+='<div class="boximg-h"><img src="'+imglist[j]+'"/><div class="font">'+imglist[j].msg+'</div></div>';
+						}
+						if(json[i]['review_count']>=20){
+							rm='<span>热门</span>';
+						}else{
+							rm='';
+						}
+						if(json[i]['call_lists'].length>0){
+							for(var n=0;n<json[i]['call_lists'].length;n++){
+								call+='@'+json[i]['call_lists'][n]['nickname']+' ';
+							}
+						}
+
+						strAppend += '<div class="content-box"><div class="user-box"><div style="background-image: url('+json[i]['head_img_url']+');"></div><div><div class="nickname"><span id="nickname">'+json[i]['nickname']+'</span><div dataid='+json[i]['text_id']+' zan='+json[i]['like_count']+' class="dz"><i>♥</i>：<span>'+json[i]['like_count']+'</span></div></div><div class="time-box"><span class="time">'+json[i]['create_time_info']+'</span><span class="area"><i></i>'+json[i]['tab_area']+'</span></div></div><div class="soo"><i></i><span>'+json[i]['school_name']+'</span></div><div class="info-box"><a class="info-tag">'+rm+'</a><a class="info">'+json[i]['msg']+'</a><a class="call">'+call+'</a></div></div><div class="timg">'+str+'</div></div>';
+					}
+					$("#text").append(strAppend);
+					fndz();
+					fninit();
+					$('.boximg-h img').load(function(){
+						fndx(this);
+					})
+				}
+	    	});
+		};
+    	// var num=$('.minddle').length;
+    	// if(num==0){
+    	// 	var str='<div class="title-box"><div class="title minddle"><div>当前活动排名前五位</div><volist name="retArr.like_lists" id="l1" offset="0" length="5"><div class="uid" datauid="{$l1.user_id}"><img src="{$l1.head_img_url}"></div></volist></div></div>';
+    	// 	$('.title-box').eq(1).after(str)
+    	// }else{
+    	// 	$('.minddle').remove();
+    	// }
+    	var str=returnCitySN["cip"];
+		// if($('.content-box').length==0){
+		// 	fnajax();
+		// }
+		$('.boximg-h img').load(function(){
+				fndx(this);
+			})
+		window.onload=function(){
+			
+			fndz();
+			
+		}
+    	function fndz(){
+			var Top=0;
+			$('.dz').unbind("touchstart");
+    		$('.dz').on('touchstart',function(){
+    			Top=document.body.scrollTop;
+    		});
+			$('.dz').unbind("touchend");
+    		$('.dz').on('touchend',function(){
+    			if(Top-document.body.scrollTop>10||Top-document.body.scrollTop<-10){
+    				return
+    			}else{
+					var index=$('.dz').index(this);
+    				$.ajax({
+						type:"get",
+						url:"http://www.xintusee.com/IOS/Text/iplike.html",
+						data:{
+							ip:str,
+							text_id:$('.dz').eq(index).attr('dataid')
+						},
+						dataType:'JSON',
+						success:function(data){
+							if(data.info=='重复点赞'){
+								$('.tc').html('对不起您已经点过赞');
+								$('.tc').show().css('opacity','1');
+								$('.dz i').eq(index).css('color','red');
+								setTimeout(function(){
+									$('.tc').css('opacity','0').hide();
+								},1600)
+							}else{
+								$('.tc').html('您已经成功点赞');
+								$('.tc').show().css('opacity','1');
+								$('.dz span').eq(index).html((Number.parseInt($('.dz span').eq(index).html())+1))
+								$('.dz i').eq(index).css('color','red');
+								setTimeout(function(){
+									$('.tc').css('opacity','0').hide();
+								},1600)
+							}				
+						}
+					});
+    				
+    			}
+    		});
+    		$('.dz').on('touchstart',function(){
+    			var index=$('.dz').index(this);
+    		})
+    	};
+    	
+    	var u = navigator.userAgent;
+		var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/);
+    	// var urlSee=window.location.href;
+		fnpd();
+		function fnpd(){
+			var userId = window.location.search;
+			if($('.content-box').length>2&&$('.content-box').eq(1).attr('datauid')!=userId.substr(userId.indexOf('uid')+4)){
+				// $('.content-box').remove();
+				// fnajax();
+				$(document).on('touchend',function(){
+					if($(window).scrollTop() >= $(document).height() - $(window).height()-100){
+						
+						$('.load').stop().show();
+						// fnajax();
+							setTimeout(function(){
+								$('.load').stop().hide(function(){
+									fnajax();
+								});
+						},1000)
+						return
+					}else{
+
+					}
+    			})
+			}
+		};
+    	
+		function fndx(img){
+					$(img).css({'height':'auto','width':'auto'});
+					if($(img)[0].naturalWidth>$(img)[0].naturalHeight){
+						var widthbl=$(img)[0].naturalHeight/(Number.parseInt($('.boximg-h').eq(0).css('height'))*1);
+						var widthbl1=($(img)[0].naturalWidth/widthbl-Number.parseInt($('.boximg-h').eq(0).css('width')))/2;
+						$(img).css({'height':'100%','left':-widthbl1});
+					}else{
+						var heightbl=$(img)[0].naturalWidth/(Number.parseInt($('.boximg-h').eq(0).css('width'))*1);
+						var heightbl1=($(img)[0].naturalHeight/heightbl-Number.parseInt($('.boximg-h').eq(0).css('height')))/2;
+						$(img).css({'width':'100%','top':-heightbl1});
+					}
+			}
+		
+    	function fninit(){
+		var imgBox=document.querySelectorAll('.timg');
+		var Top=0;
+    	var eventNum='';
+    	var arr=[];
+    	$(imgBox).each(function(i,a){
+    		$(a).unbind("touchstart");
+    		$(a).on('touchstart',function(){
+    			arr=[];
+    			Top=document.body.scrollTop;
+    			arr=$(this).children('div').children('img');
+    			eventNum=a;
+    			
+    		});
+    		$(a).unbind("touchend");
+    		$(a).on('touchend',function(){
+    			if(Top-document.body.scrollTop>10||Top-document.body.scrollTop<-10){
+    				return
+    			}else{
+					fnPj(arr);
+					slideshow();
+    				$('.tc_imgbox').show();
+    				$('.imgboxall').css('left','0');
+					$("body").on('touchmove',function(event) { event.preventDefault(); }, false);
+    				fnOff();
+    				fnFont();
+    				
+    				
+    			}
+    		});
+    	});
+    	
+		function fnOff(){
+			$('.tc_imgbox span').on('touchstart',function(){
+				$('.tc_imgbox')[0].scrollLeft=0;
+				$('.tc_imgbox').hide();
+				$("body").off("touchmove");
+				$('.imgboxall').html('');
+				$("body").unbind('touchmove');
+			});
+		};
+    	
+    	function fnFont(){
+    		$('.oneimgbox').each(function(i,a){
+    		$('.imgboxall').css('width',$('.oneimgbox').length*105+'vw');
+    		$('.fff').html($('.oneimgbox').length);
+			$(a).children('.yema').children('.red').html(i+1);
+				if(Number.parseInt($(a).children('.ft').css('height'))+Number.parseInt($('.img12').eq(i).css('height'))>window.screen.height*0.83){
+					$('.ft').eq(i).addClass('ft1');
+				}	
+			})
+    		var num=$('.oneimgbox').length;
+    		$('.oneimgbox').eq(num-1).css('margin-right','0px')
+    	};
+    	
+    	function fnPj(arr){
+    		var str='';
+    		$(arr).each(function(i,a){
+    			str+='<div class="oneimgbox"><div class="yema"><span class="red"></span><span class="balck">/</span><span class="fff"></span></div><img class="img12" src="'+$(a).attr('src')+'"/></div>';
+    		})
+    		$('.imgboxall').append(str);
+    	};
+		};
+		function slideshow(){
+				var w=Number.parseInt($('body').css('width'));
+				var a=0;
+				var touchx=0;
+				var endx=0;
+				var num=$('.oneimgbox').length;
+				$('.fff').html(num)
+				$('.tc_imgbox')[0].addEventListener('touchstart',function(event){
+					touchx=Number.parseInt(event.targetTouches[0].pageX);			
+				},false);
+				$('.tc_imgbox')[0].addEventListener('touchend',function(e){
+					$('.tc_imgbox')[0].ontouchmove=null;
+	                $('.tc_imgbox')[0].ontouchend=null;
+	              	endx=e.changedTouches[0].pageX;
+					if(touchx>endx&&touchx-endx>40){
+						if(a>=num-1){
+							a=num-1
+						}else{
+							a++
+						}
+							$('.imgboxall').stop().animate({'left':-w*a},300)
+						}else if(touchx-endx<-40){		
+							if(a<=0){
+								a=0
+							}else{
+								a--
+							}
+							$('.imgboxall').stop().animate({'left':-w*a},300)
+						}
+					},false);
+			};
+			fnjf();
+			fndz();
+			function fnjf(){
+			var ipdz=returnCitySN["cip"];
+			var activity_id = {$activity_id};
+			var userId = window.location.search;
+			$.ajax({
+					type:"POST",
+					url:"/IOS/Text/addIpsee.html",
+					data:{
+						ip:ipdz,
+						text_id:activity_id,
+						type:'activity'
+					},
+					dataType:'JSON',	
+					success:function(data){
+						var oHead = document.getElementsByTagName('head')[0];
+
+						var oScript = document.createElement('script');
+
+						oScript.setAttribute('src','__STATIC__/js/wx.js');
+
+						oScript.setAttribute('type','text/javascript');
+
+						oHead.appendChild(oScript);
+						if(data.info=='成功'){
+							$.ajax({
+								type:"POST",
+								url:"/IOS/User/add_integral.html",
+								data:{
+									user_id:userId.substr(userId.indexOf('uid')+4),
+									integral:1
+								},
+								dataType:'JSON',	
+								success:function(data){
+									console.log(user_id)
+								}
+							});
+						}else{
+							console.log('已填加')
+							return
+						}
+					}
+				});
+		};
+    	$('.uid').on('touchstart',function(){
+    		var user_id=$(this).attr('datauid');
+    		window.location.href="http://www.xintusee.com/IOS/User/share.html?id="+user_id; 
+		})
+
+		$.ajax({
+	    		type:"GET",
+	    		url:"http://www.xintusee.com/IOS/Activity/info.html",
+	    		data:{
+					activity_id:activity_id,
+					wp:1,
+				},
+				dataType:'JSON',
+				success:function(data){
+					console.log('成功')
+				}
+			})
+			
+	</script>
+	<script src="__STATIC__/js/Invitation.js"></script>
+    <!-- <script src="__STATIC__/js/wx.js"></script> -->
+</body>
+</html>

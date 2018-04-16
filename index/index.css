@@ -1,5 +1,28 @@
 
 /* 整体盒子 */
+
+/* .box{
+    display: none;
+}
+.loging{
+    width: 6.25rem;
+    height: 6.25rem;
+    position: fixed;
+    top: 50%;
+    margin-top: -3.125rem;
+    background: rgba(0,0,0,.8);
+    left: 50%;
+    margin-left: -3.125rem;
+    border-radius:0.5rem; 
+}
+.loging div{
+    width: 3.125rem;
+    height: 3.125rem;
+    background: url('http://www.xintusee.com/Public/home/img/f5.gif') no-repeat;
+    margin:  0 auto;
+    background-size:100% 100%; 
+    margin-top: 1.5625rem;
+} */
 .box_head{
     background: #fff;
     overflow: hidden;
@@ -339,6 +362,8 @@ body{
     padding-bottom: 0;
     padding-top: 2.75rem;
     background:#fff;
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
 }
 .box_NameList .box_NameList_head{
     padding-top: 2.5rem;
@@ -445,6 +470,7 @@ body{
     padding-bottom: 0;
     height: 5rem;
     background: #fff;
+    display: none;
 }
 .box_more div{
     float: right;
@@ -490,4 +516,102 @@ body{
     clear: both;
     overflow: hidden;
     visibility: hidden;
+}
+
+
+/* 列表 */
+.imgList li{
+    padding-left: 1.625rem;
+    padding-right: 1.625rem;
+    background: #fff;
+    padding-bottom: 0.875rem;
+    margin-bottom: 1.25rem;
+}
+
+.imgList_head{
+    height: 7rem;
+}
+.imgList_head_left{
+    float: left;
+    position: relative;
+    height: 100%;
+    width: 23.125rem;
+}   
+.imgList_head_left img{
+    position: absolute;
+    width: 3.75rem;
+    height: 3.75rem;
+    border-radius:50%; 
+    top: 50%;
+    margin-top: -1.875rem;
+}
+.imgList_head_left span{
+    font-size:1.5rem;
+    line-height: 7rem; 
+    left: 4.375rem;
+    position: absolute;
+    width: 18.75rem;
+    overflow: hidden;  /*溢出隐藏*/
+    text-overflow: ellipsis; /*以省略号...显示*/
+    white-space: nowrap;  /*强制不换行*/
+}
+.imgList_head_right{
+    height: 100%;
+    float: right;
+    position: relative;
+}
+.imgList_head_right img{
+    width: 2.5rem;
+    height: 2.5rem;
+    vertical-align: middle;
+    margin-right: 1rem;
+}
+.imgList_head_right span{
+    line-height: 7rem;
+    font-size: 1.25rem;
+    color: #cdcdcd;
+    vertical-align: middle;
+}
+.imgList_img{
+    width: 100%;
+    height: 24.375rem;
+    overflow: hidden;
+    border-radius:0.5rem; 
+}
+.imgList_img img{
+    width: 100%;
+    height: 100%;
+}
+.content_school{
+    height: 4.875rem;
+}
+.content_school_left{
+    float: left;
+}
+.content_school_left i{
+    float: left;
+    width: 1.875rem;
+    height: 1.875rem;
+    background: url('img/content_ico.png') no-repeat;
+    background-size:100% 100%;
+    margin-top: 1.5rem;
+    margin-right: 0.8125rem;
+}
+.content_school_left span{
+    float: left;
+    font-size:1.5rem; 
+    color: #030303;
+    line-height: 4.875rem;
+}
+.content_school_right{
+    float: right;
+    font-size: 1.375rem;
+    line-height: 4.875rem;
+    color:#c9c9c9;
+}
+
+.caption_content{
+    font:1.5rem/2.125rem '微软雅黑';
+    color: #555;
+    margin-bottom: 1.875rem;
 }

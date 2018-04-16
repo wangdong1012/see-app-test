@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>一包乾坤</title>
+    <link rel="stylesheet" href="../tool/tool.css">
+    <link rel="stylesheet" href="add.css">
+    <!-- 计算rem的比例 -->
+    <script>
+        var num = 1 / window.devicePixelRatio;
+        document.write('<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale='+num+',minimum-scale='+num+',maximum-scale='+num+'" />')
+        var fontNum = document.documentElement.clientWidth / 46.875;
+        var html = document.getElementsByTagName('html')[0];
+        html.style.fontSize = fontNum + 'px';
+    </script>
+    <script src="./jquery-3.2.0.js"></script>
+</head>
+<body>
+    <div class="box">
+        <div class="red"></div>
+        <div class="img_head">
+            <div class="like"></div>
+            <img src="./img/timg.jpg" alt="美女">
+            <div class="dw">
+                <ul>
+                    <li><span>的确精致 要生活也要快活</span></li>
+                    <li><span>手包好可爱</span></li>
+                    <li><span>这里发生了什么？</span></li>
+                </ul>
+                
+            </div>
+            <div class="img_foot">
+                <div class="num">
+                    已有4737人参与
+                </div>
+                <i class="up"></i>
+            </div>
+        </div>
+        <div class="img_list">
+            <ul>
+                <li>
+                    <img src="./img/1.jpg" alt="图片">
+                </li>
+                <li>
+                    <img src="./img/2.jpg" alt="图片">
+                </li>
+                <li>
+                    <img src="./img/3.jpg" alt="图片">
+                </li>
+            </ul>
+        </div>
+        <div class="fli">
+            <form >  
+                <span>
+                    <input type ="file" value=""/>  
+                </span>
+                <i></i>
+            </form> 
+        </div>
+    </div>
+    <script src="./add.js"></script>
+</body>
+</html>

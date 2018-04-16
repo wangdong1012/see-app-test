@@ -1,0 +1,147 @@
+body{
+    width: 100%;
+    height: 100%;
+    background: #fff;
+}
+html{
+    width: 100%;
+    height: 100%;
+}
+.head{
+    width: 850px;
+    height: 150px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+.head img{
+    width: 100%;
+    height: 100%;
+}
+.conment{
+    width: 100%;
+    height: 465px;
+    background: url('./img/back.png') no-repeat;
+}
+.conment_top{
+    width:828px;
+    height: 276px;
+    margin: 0 auto;
+    margin-bottom: 20px;
+}
+/* 轮播图 */
+.conment_top_left{
+    width: 415px;
+    height: 258px;
+    float: left;
+    margin-top: 18px;
+    overflow: hidden;
+    position: relative;
+}
+.conment_top_left img{
+    width: 100%;
+    height: 100%;
+    border-radius:10px; 
+}
+.conment_top_left ul{
+    height: 100%;
+    position: absolute;
+    left: 0;
+}
+.conment_top_left li{
+    width: 415px;
+    height: 100%;
+    text-align: center;
+    float: left;
+}
+.conment_top_left .left{
+    width: 38px;
+    height: 59px;
+    border-radius:8px; 
+    background: rgba(0,0,0,.5);
+    text-align: center;
+    line-height: 59px;
+    font-size:40px; 
+    position: absolute;
+    left: 0;
+    color: #fcfcfc;
+    top: 50%;
+    margin-top: -24.5px;
+}
+.conment_top_left .right{
+    width: 38px;
+    height: 59px;
+    border-radius:8px; 
+    background: rgba(0,0,0,.5);
+    text-align: center;
+    line-height: 59px;
+    font-size:40px; 
+    position: absolute;
+    right: 0;
+    color: #fcfcfc;
+    top: 50%;
+    margin-top: -24.5px;
+}
+.yuan{
+    width: 100%;
+    height: 10px;
+    position: absolute;
+    bottom: 9px;
+    text-align: center;
+    line-height: 10px;
+}
+
+.yuan a{
+    width:10px;
+    height: 10px;
+    border-radius:50%; 
+    background: #fff;
+    opacity: .3;
+    display: inline-block;
+
+}
+
+
+.yuan a:first-child{
+    opacity: 1;
+}
+
+
+
+.conment_top_right{
+    width: 361px;
+    height: 267px;
+    background: mediumvioletred;
+    float: right;
+    margin-top: 7px;
+}
+.conment_foot{
+    height: 120px;
+    width: 828px;
+    margin: 0 auto;
+}
+.conment_foot_left{
+    width: 410px;
+    height: 100%;
+    float: left;
+    background: red;
+}
+.conment_foot_right a{
+    width: 340px;
+    height: 84px;
+    float: right;
+    margin-top: 20px;
+}
+.conment_foot_right a{
+    width: 340px;
+    height: 84px;
+    float: right;
+    background: url('./img/ta.png') no-repeat;
+}
+
+/* 滚动文字 */
+#master-container-scroller .master-container-scroller_item {
+    display: block;
+    padding-bottom: 6px;
+    -webkit-animation: scroll 15s cubic-bezier(0.645, 0.045, 0.355, 1) infinite;
+    animation: scroll 15s cubic-bezier(0.645, 0.045, 0.355, 1) infinite
+}

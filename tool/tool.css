@@ -13,5 +13,12 @@ a{
     color:#fff;
 }
 img{
-    border: none;
+    border: 0;
+    padding: 0;
+}
+input{
+    outline: none;
+    -webkit-appearance: none;
+    border-radius: 0;
+    border: 0;
 }

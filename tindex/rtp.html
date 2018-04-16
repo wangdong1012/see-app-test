@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>密码找回</title>
+    <link href="__STATIC__/css/rtp.css" type="text/css" rel="stylesheet" />
+    <link href="__STATIC__/css/tool.css" type="text/css" rel="stylesheet" />
+    <script src="__STATIC__/js/jquery-3.2.0.js"></script>
+    <!-- 计算rem的比例 -->
+    <script>
+        var num = 1 / window.devicePixelRatio;
+        document.write('<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale='+num+',minimum-scale='+num+',maximum-scale='+num+'" />')
+        var fontNum = document.documentElement.clientWidth / 46.875;;
+        var html = document.getElementsByTagName('html')[0];
+        html.style.fontSize = fontNum + 'px';
+    </script>
+</head>
+<body>
+    <div class="box">
+        <form action="">
+            <div>
+                <i class="i1"></i>
+                <input placeholder ='请输入有效手机号' type="text" class="text" id="text">
+                <span></span>
+            </div>
+            <div>
+                <i class="i1 i2"></i>
+                <input placeholder ='密码必须为6-16位，且包含字母和数字' type="password"  id="pass" class="text">
+                <span></span>
+            </div>
+            <div>
+                <i class="i1 i2"></i>
+                <input placeholder ='请重复密码' type="password"  id="pass1" class="text">
+                <span></span>
+            </div>
+            <div>
+                <i class="i1 i3"></i>
+                <input placeholder ='手机验证码' type="text"  id="phone" class="text">
+                <span></span>
+                <a class="button" href="javascript:;">获取验证码</a>
+            </div>
+        </form>
+    </div>
+
+    <div class="imgyzm">
+        <div class="head">
+            <img src="" alt="图形验证">
+            <i></i>
+        </div>
+        <div class="imgyzm_yzm">
+            <input type="text" placeholder="请输入图形中的验证码" id="imgyzm">
+        </div>
+        <div class="imgyzm_but">
+            发送
+        </div>
+    </div>
+    <div class="imgyzm1">
+       
+    </div>
+    <div id="but">确认修改</div>
+    <script>
+        window.onload = function(){
+            var inoutArr = ['请输入有效手机号','密码必须为6-16位，且包含字母和数字','请重复密码','手机验证码','请输入图形中的验证码'];
+            //input获取焦点时清楚默认文字
+            $('input').focus(function(){
+                $(this).attr('placeholder','');
+            });
+            //input失去焦点时恢复默认文字
+            $('input').blur(function(){
+                $(this).attr('placeholder',inoutArr[$(this).index('input')]);
+            });
+            //text输入框失去焦点时候触发事情
+            var butOff=false;
+            $('#text').blur(function(){
+                var myreg=/^[1][0-9]{10}$/;  
+                if(myreg.test($(this).val())){
+                    $('.button').css({'background':'#fc5151','color':'#fff'});
+                    $('.button').on('touchstart',isOff);
+                }else{
+                    button('请核实您的手机号再输入',true,1500,function(){return});
+                }
+            });
+            //text在input事件是时候触发得事件。
+            $('#text').on('input',function(){
+                var myreg=/^[1][0-9]{10}$/;  
+                if(myreg.test($(this).val())){
+                    $('.button').css({'background':'#fc5151','color':'#fff'});
+                    $('.button').on('touchstart',isOff);
+                }
+            });
+
+             //密码失去焦点是触发
+            $('#pass').blur(function(){
+                var myreg=/^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,16}$/;  
+                if(myreg.test($(this).val())){
+                    butOff=true;
+                   return
+                }else{
+                    butOff=false;
+                }
+            });
+            
+            //密码input时候触发
+            $('#pass').on('input',function(){
+                var myreg=/^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,16}$/;  
+                if(myreg.test($(this).val())){
+                    butOff=true;
+                }else{
+                    butOff=false;
+                }
+            });
+
+            //重复密码input时触发
+            var butOff1 = false;
+            $('#pass1').on('input',function(){
+                var myreg=/^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,16}$/;  
+                if(myreg.test($(this).val())){
+                    butOff1=true;
+                }else{
+                    butOff1=false;
+                }
+            });
+            //重复密码失去焦点是触发
+            $('#pass1').blur(function(){
+                var myreg=/^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,16}$/;  
+                if(myreg.test($(this).val())){
+                    if($('#pass').val()==$('#pass1').val()){
+                        butOff1=true;
+                    }else{
+                        button('两次密码不一致请重新输入',true,1500,function(){return});
+                        butOff1=false;
+                    }
+                   return
+                }else{
+                    if($('#pass').val()==$('#pass1').val()){
+                        button('密码必须为6-16位，且包含字母和数字',true,1500,function(){return});
+                    }else{
+                        button('两次密码不一致请重新输入',true,1500,function(){return});
+                        butOff1=false;
+                    }
+                    butOff1=false;
+                }
+            });
+            //判断是否是开启或者关闭函数，主要是用于button
+            function isOff(){
+                $('.imgyzm img').attr('src','http://www.xintusee.com/IOS/User/verify.html');
+                $('.imgyzm').show(100);
+            };
+            var off=false;
+            
+            //找回密码点击按钮触发事件
+            function isbutOff(){
+                $('#but').off('touchstart',isbutOff);
+                if(off&&butOff&&butOff1){
+                    $.ajax({
+                        type:"POST",
+                        url:"http://www.xintusee.com/IOS/User/forgot.html",
+                        data:{
+                            account:$('#text').val(),
+                            password:$('#pass').val(),
+                            vnum:$('#phone').val()
+                        },
+                        dataType:'JSON',
+                        success:function(data){
+                            if(data.info=="密码修改成功"){
+                                button('密码修改成功',true,1500,function(){
+                                    var isiOS = !!navigator.userAgent.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/);
+                                    if(isiOS){
+                                        window.webkit.messageHandlers.retrievePasswordCompleteClick.postMessage({'type':'success'});
+                                    }else{
+                                        nativeMethod.toActivity('');
+                                    }
+                                    return
+                                });
+                                
+                            }else if(data.info=='未找到手机号或新密码与旧密码相同'){
+                                $('.imgyzm').hide(4);
+                                button('新密码与旧密码相同，请返回登陆',true,3000,function(){
+                                    $('#but').on('touchstart',isbutOff); 
+                                    return
+                                });
+                            }else{
+                                button(data.info,true,3000,function(){
+                                    $('#but').off('touchstart',isbutOff);
+                                    return
+                                });
+                            }
+                        }
+                    })
+                }else if(off&&butOff&&!butOff1){
+                    button('两次输入密码不一致，请您核对下重新输入',true,1500,function(){
+                        $('#but').on('touchstart',isbutOff);
+                    });
+                }else if(off&&!butOff){
+                    button('密码必须为6-16位，且包含字母和数字',true,1500,function(){
+                        $('#but').on('touchstart',isbutOff);
+                    });
+                }else{
+                    return
+                }
+            };
+            //负责弹窗得函数
+            function button(str,num,time,fn){
+                $('.imgyzm1').html(str).css('display','block');
+                if(num){
+                    var time = setTimeout(function(){
+                        $('.imgyzm1').html('').css('display','none');
+                        buttonOff= true;
+                        fn();
+                    },time)
+                }else{
+                    fn();
+                }
+            };
+            //重新获取图形验证码？
+            $('.head img').on('touchstart',function(){
+                $('.imgyzm img').attr('src','http://www.xintusee.com/IOS/User/verify.html');
+            });
+            //获取验证码？得方法。
+            $('.imgyzm_but').on('touchstart',fnhuoqu);
+
+            function fnhuoqu(){
+                $('.imgyzm_but').off('touchstart',fnhuoqu);
+                if($('.imgyzm_yzm input').val() == ''){
+                    button('验证码不能为空',true,2000,function(){
+                        $('.imgyzm_but').on('touchstart',fnhuoqu);
+                        return
+                    })
+                }else{
+                    button('正在验证图形验证码...',false,1000,function(){
+                        $.ajax({
+                            type:"POST",
+                            url:"http://www.xintusee.com/IOS/User/forgot_vregister.html",
+                            data:{
+                                mobile:$('#text').val(),
+                                code:$('.imgyzm_yzm input').val()
+                            },
+                            dataType:'JSON',
+                            success:function(data){
+                                if(data.info=='短信发送成功'){
+                                    $('#but').on('touchstart',isbutOff);
+                                    $('#but').css({'background':'#fc5151','color':'#fff'});
+                                    $('.button').off('touchstart',isOff);
+                                    $('.button').css({'background':'#e5e5e5','color':'#6c6c6c'});
+                                    button('验证正通过,请查看手机验证码',true,2500,function(){return});
+                                    $('.imgyzm').hide(100);
+                                    var num = 60;
+                                    $('.button').html(num+'s');
+                                    var time = setInterval(function(){
+                                        num--;
+                                        $('.button').html(num+'s');
+                                        if(num <= 0){
+                                            clearInterval(time);
+                                            $('.button').css({'background':'#fc5151','color':'#fff'});
+                                            $('.button').on('touchstart',isOff);
+                                            $('.button').html('获取验证码');
+                                            return
+                                        }
+                                    },1000)
+                                    off=true
+                                }else if(data.info=='该手机号未注册'){
+                                    $('.imgyzm').hide(4);
+                                    button('未找到该手机号',true,3000,function(){
+                                        $('.imgyzm_but').on('touchstart',fnhuoqu);
+                                        return
+                                    });
+                                   
+                                }
+                            }
+                        });
+                    })
+                }
+               
+            }
+        };
+    </script>
+</body>
+</html>

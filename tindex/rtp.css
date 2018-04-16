@@ -1,0 +1,161 @@
+body{
+    width: 100%;
+    height: 100%;
+    background: #fff;
+}
+html{
+    width: 100%;
+    height: 100%;
+}
+.box{
+    width: 100%;
+}
+.box div{
+    height: 8.75rem;
+    position: relative;
+}
+.i1{
+    width: 3.125rem;
+    height: 3.125rem;
+    background: url('/Public/static/img/phone.png') no-repeat;
+    background-size:100% 100%;
+    position: absolute;
+    top: 50%;
+    margin-top: -1.5625rem;
+    margin-left: 2rem;
+}
+.text{
+    width: 34.875rem;
+    font-size: 1.875rem;
+    line-height: 3.125rem;
+    position: absolute;
+    margin-left: 9rem;
+    top: 50%;
+    margin-top: -1.5625rem;
+}
+span{
+    position: absolute;
+    width: 34.875rem;
+    bottom: 0;
+    height: 2px;
+    background: #f2f2f2;
+    margin-left: 9rem;
+}
+.box div .i2{
+    background: url('/Public/static/img/pass.png') no-repeat;
+    background-size:100% 100%;
+}
+.box div .i3{
+    background: url('/Public/static/img/yzm.png') no-repeat;
+    background-size:100% 100%;
+}
+#phone{
+    width: 18.75rem;
+}
+
+div a{
+    position: absolute;
+    width: 14.375rem;
+    height: 5.5rem;
+    text-align: center;
+    background: #e5e5e5;
+    border-radius: 0.375rem;
+    line-height: 5.5rem;
+    color: #6c6c6c;
+    font-size:1.625rem; 
+    right: 3rem;
+    top: 50%;
+    margin-top: -2.75rem;
+}
+.imgyzm{
+    width: 38.875rem;
+    height: 31.5rem;
+    ;box-shadow:0px -2px 5px 5px rgba(0, 0, 0, .2);
+    position: fixed;
+    top: 20%;
+    left: 50%;
+    margin-left: -19.4375rem;
+    z-index: 100;
+    background: #fff;
+    border-radius:0.9375rem; 
+    display: none;
+}
+.imgyzm1{
+    width: 31.25rem;
+    height: 12.5rem;
+    position: absolute;
+    margin: 0 auto;
+    top: 20%;
+    left: 50%;
+    margin-left: -15.625rem;
+    z-index: 100;
+    background:rgba(0,0,0,.7);
+    border-radius:0.9375rem; 
+    font-size:1.75rem; 
+    line-height:12.5rem;
+    text-align: center;
+    color: #fff;
+    display: none;
+}
+.imgyzm .head{
+    width: 22.5rem;
+    height: 10rem;
+    margin: 0 auto;
+    background: #f2f2f2;
+    margin-top: 3.125rem;
+    position
+    : relative;
+}
+.imgyzm .head img{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+.imgyzm .head i{
+    position: absolute;
+    width: 2.5rem;
+    height: 2.5rem;
+    background: url('/Public/static/img/f5.png') no-repeat;
+    background-size: 100% 100%;
+    bottom: 0.25rem;
+    right: 0.25rem;
+}
+.imgyzm_yzm{
+    margin: 0 auto;
+    width: 33.25rem;
+    height: 5.5625rem;
+    margin-top: 2.5rem;
+    margin-bottom: 2.5rem;
+}
+.imgyzm_yzm input{
+    width: 33rem;
+    height: 5.3125rem;
+    border: 2px solid #f2f2f2;
+    background: #fcfcfc;
+    font-size:1.625rem; 
+    line-height: 5.3125rem;
+    text-align: center;
+}
+.imgyzm_but{
+    width: 13.625rem;
+    height: 5rem;
+    text-align: center;
+    background: #fc5151;
+    margin: 0 auto;
+    font-size:1.75rem; 
+    line-height: 5rem;
+    color: #fff;
+    border-radius:0.4375rem; 
+}
+#but{
+    height: 6.25rem;
+    width: 42.875rem;
+    background: #e5e5e5;
+    margin: 0 auto;
+    color: #6c6c6c;
+    font-size:1.75rem; 
+    line-height: 6.25rem;
+    border-radius: 0.4375rem; 
+    margin-top: 11.25rem;
+    text-align: center;
+}

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <META HTTP-EQUIV="pragma" CONTENT="no-cache"> 
+    <META HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate"> 
+    <META HTTP-EQUIV="expires" CONTENT="0">
+    <title>个人分享</title>
+    <!-- <link rel="stylesheet" href="../tool/tool.css">
+    <link rel="stylesheet" href="tindex.css"> -->
+    <!-- 线上路径 -->
+    <link href="__STATIC__/css/tindex.css" type="text/css" rel="stylesheet" />
+    <link href="__STATIC__/css/tool.css" type="text/css" rel="stylesheet" />
+    <script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+    <script src="__STATIC__/js/jquery-3.2.0.js"></script>
+    <!-- 计算rem的比例 -->
+    <script>
+        var num = 1 / window.devicePixelRatio;
+        document.write('<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale='+num+',minimum-scale='+num+',maximum-scale='+num+'" />')
+        var fontNum = document.documentElement.clientWidth / 40;
+        var html = document.getElementsByTagName('html')[0];
+        html.style.fontSize = fontNum + 'px';
+    </script>
+    <script src="https://static.mlinks.cc/scripts/dist/mlink.min.js"></script>
+    <script>
+        // 数据变量
+        var user_id = {$user_id};
+        var user_img = "{$ret.head_img_url}";
+        var user_name = "{$ret.nickname}";
+        var textSize = 0;
+        var topicSize = 0;
+                // 图说列表
+                ajax();
+                function ajax(fn){
+                    $.ajax({
+                        type:"POST",
+                        url:"/IOS/User/userTextList.html",
+                        data:{
+                            user_id:user_id,
+                            pageSize:3,
+                            textSize:textSize,
+                            topicSize:topicSize,
+                        },
+                        dataType:'JSON',
+                        success:function(data){
+                        
+                            textSize=data.result.textSize;
+                            topicSize=data.result.topicSize;
+                            var time = setInterval(function(){
+                                if(strPj){
+                                    strPj(data);
+                                    clearInterval(time);
+                                 }
+                            },100)
+                            if(typeof(fn)=='function'){
+                                fn();
+                            }
+                            new Mlink({
+                                mlink: "https://skl3ip.mlinks.cc/Absb",
+                                button: $('.foot_content div a'),
+                                autoLaunchApp : false,
+                                autoRedirectToDownloadUrl: true,
+                                downloadWhenUniversalLinkFailed: false,
+                                inapp : false,
+                                params: {'id':user_id,'type':'register'}
+                            })
+                        }
+                    });
+                };
+                
+    </script>
+</head>
+<body>
+    <!-- 头部 -->
+        <div class="head">
+            <div class="head_top">
+                <img src="{$ret.background_url}" alt="主背景图">
+            </div>
+            <div class="head_middle">
+                <div class="head_user_img">
+                    <img src="{$ret.head_img_url}" alt="头像">
+                </div>
+                <div class="head_user">
+                    <div class="head_user_name">
+                        {$ret.nickname}
+                    </div>
+                    <div class="head_user_content"> 
+                        {$ret.signature}
+                    </div>
+                </div>
+            </div>
+            <div class="head_like">
+                <ul>
+                    <li>
+                        <span class="s1">{$ret.attention_count}</span>
+                        <span class="s2">关注</span>
+                    </li>
+                    <li>
+                        <span class="s1">{$ret.fans_count}</span>
+                        <span class="s2">粉丝</span>
+                    </li>
+                    <li>
+                        <span class="s1">{$ret.like_count}</span>
+                        <span class="s2">喜欢</span>
+                    </li>
+                </ul>
+            </div>
+            <div class="head_foot">
+                <div><span></span>篇文章</div>
+            </div>
+        </div>
+        <!-- 内容部分 -->
+        <div class="content">
+            <ul></ul>
+        </div>
+        <!-- 刷新 -->
+        <div class="f5">
+            <div></div>
+        </div>
+         <!-- 文章结尾 -->
+        <div class="foot">
+            <div class="foot_content">
+                <span>去看看其他文章，有没有把你的胃口吊起来</span>
+                <div>
+                    <a href="javascript:;">登陆</a>
+                    <i></i>
+                    <a href="javascript:;">注册</a>
+                </div>
+            </div>
+        </div>
+        
+        <script src="__STATIC__/js/tindex.js?v=1.2"></script>
+        <script>    
+            //微信调用
+            var appId="{$JSSDK.appId}";
+            var timestamp="{$JSSDK.timestamp}";
+            var nonceStr="{$JSSDK.nonceStr}";
+            var signature="{$JSSDK.signature}";
+            
+            var link = '';
+            var title ="{$ret.nickname}"+' 的个人主页';;
+            var desc = "{$ret.signature}";
+            var imgUrl ="{$ret.head_img_url}";
+
+		    var ip = "{$client_ip}";
+        </script>
+        <script src="http://pv.sohu.com/cityjson?ie=utf-8"></script>
+        <script src="__STATIC__/js/wx.js"></script>
+        <script src="__STATIC__/js/Invitation.js"></script>
+    </body>
+</html>
